@@ -1,0 +1,9 @@
+<p [ngClass] = "{
+  'title-text' :counter == 0,
+  'title-text-red': counter < 0,
+  'title-text-green': counter > 0,
+}">
+{{counter}}
+</p>
+<button (click)="changeCount(true)">+</button>
+<button (click)="changeCount(false)">-</button>
