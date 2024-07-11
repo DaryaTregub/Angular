@@ -1,0 +1,8 @@
+<h2>{{title}}</h2>
+<ul>
+  <li [id]="car.model" *ngFor="let car of arr_cars;">
+    <h3>{{car.model}}</h3>
+    <div *ngFor="let item of car.description |keyvalue">{{item.key}}:{{item.value}}</div>
+    <p>Price: {{car.price | currency:'USD'}}</p>
+  </li>
+</ul>
