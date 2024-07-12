@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/about" style="margin-right: 15px;">О компании</a>
+  <a routerLink="/contact">Контакты</a>
+</nav>
+<ul>
+  <li *ngFor="let item of item_arr">
+    <a routerLink="/item/{{item.id}}" [state]="{ data:item }">{{item.name}}</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
