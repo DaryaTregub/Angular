@@ -5,10 +5,6 @@ import { ItemComponent } from './page/item/item.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MainComponent
-  },
-  {
     path: 'item',
     loadChildren: () => import('./page/page.module').then(m => m.PageModule)
   },
