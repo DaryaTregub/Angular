@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'myApp';
+  constructor(
+    private meta: Meta,
+    private title: Title
+  ) {
+    this.meta.addTags([
+      { property: 'og:desk', content: 'root_desc' },
+    ]);
+    this.title.setTitle('Desk Page');
+
+  }
 }
