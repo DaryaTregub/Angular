@@ -4,22 +4,26 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TailwindComponent } from './tailwind/tailwind.component';
-import { MaterialComponent } from './material/material.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatExpansionModule} from '@angular/material/expansion'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BootstrapComponent } from './bootstrap/bootstrap.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
       TailwindComponent,
-      MaterialComponent
+      BootstrapComponent
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule,   
-    MatExpansionModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,   
+    AccordionModule.forRoot(),
    
   ],
+  exports: [  AccordionModule,],
+
   providers: [
     provideClientHydration(),
     provideAnimationsAsync()
