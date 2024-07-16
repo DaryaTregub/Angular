@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BootstrapService } from '../bootstrap.service';
 
 @Component({
   selector: 'app-bootstrap',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BootstrapComponent implements OnInit {
 
-  constructor() { }
+  constructor(public bootstrapServ: BootstrapService) { }
 
   ngOnInit() {
   }
