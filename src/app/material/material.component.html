@@ -1,0 +1,12 @@
+<section class="">
+  <h2>{{section_title}}</h2>
+  <mat-accordion>    
+    <mat-expansion-panel *ngFor="let el of materialServ.accordion_arr">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{el.title}} </mat-panel-title>
+        <mat-panel-description> {{el.description}} </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{el.content}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

@@ -1,0 +1,16 @@
+<section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
+  <h2>{{section_title}}</h2>
+  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <div class="mb-4 flex items-center justify-between gap-4 md:mb-8">
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">{{shop_title}}</h3>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <a href="#" *ngFor="let el of tailwindServ.products_arr"
+        class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(el.icon)"></span>
+        <span class="text-sm font-medium text-gray-900 dark:text-white">{{el.text}}</span>
+      </a>
+    </div>
+  </div>
+</section>

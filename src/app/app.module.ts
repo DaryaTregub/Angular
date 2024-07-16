@@ -3,17 +3,26 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TailwindComponent } from './tailwind/tailwind.component';
+import { MaterialComponent } from './material/material.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatExpansionModule} from '@angular/material/expansion'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [		
+    AppComponent,
+      TailwindComponent,
+      MaterialComponent
+   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,   
+    MatExpansionModule,
+   
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
