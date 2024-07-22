@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, map, pipe } from 'rxjs';
 import { CounterService } from '../counter.service';
 import { RandomService } from '../random.service';
 import { Observable, Subscription } from 'rxjs';
@@ -28,7 +28,8 @@ export class NumbersComponent {
   enableStartButton = false;
   randomStopButton = true;
   randomStartButton = false;
- 
+  randomArr: string =''
+
 
   getCounter() {
     this.enableStartButton = true;
@@ -47,12 +48,16 @@ export class NumbersComponent {
   getRandom() {
     this.randomStopButton = false;
     this.randomStartButton = true;
-    this.randomSubst$ = this.inserval$.subscribe(next =>
-      this.randomService.setRandom())
+    
+    // this.randomSubst$ = this.inserval$.subscribe(next =>
+    //   this.randomService.setRandom())
+    // this.randomSubst$ = this.inserval$.pipe(map(value => `Random Value: ${value}`)}
+    this.randomSubst$ = this.inserval$.pipe(map(value =>  {return `Random Value: ${this.randomService.setRandom()}`})).subscribe(next=> this.randomService.bext(next))
+  
   }
 
   stopRandom() {
-    this.randomSubst$.unsubscribe();   
+    this.randomSubst$.unsubscribe();
     this.randomStopButton = true;
     this.randomStartButton = false;
   }
