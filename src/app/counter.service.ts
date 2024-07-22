@@ -10,12 +10,8 @@ export class CounterService {
   counterArray:any[] = [];
 
   setCounter() {
-    return new Observable((observer) => {
-      setInterval(() => {
-        this.counterArray.push(this.counterArray.length + 1);
-        observer.next(this.counterArray);
-      }, 2000);
-    });
+    this.counterArray.push(this.counterArray.length + 1)
+      console.log(this.counterArray)
   }
 
 }

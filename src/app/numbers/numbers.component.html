@@ -6,13 +6,11 @@
                     <p>Числа по порядку</p>
                     <div>
                         <button class="btn btn-primary mx-3" [attr.disabled]="enableStartButton? true : null" (click)="getCounter()">Запустить</button>
-                        <button class="btn btn-primary" [attr.disabled]="enableStopButton? true : null" (click)="stopSubs()">Остановить</button>
+                        <button class="btn btn-primary" [attr.disabled]="enableStopButton? true : null" (click)="stopSubsCounter()">Остановить</button>
                     </div>
                 </div>
                 <ul class="list-group list-group-flush" >
                     <li class="list-group-item"  *ngFor="let el of counterService.counterArray" >{{el}}</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
                 </ul>
             </div>
         </div>
@@ -21,14 +19,12 @@
                 <div class="card-header d-flex justify-content-between">
                     <p>Рандомные числау</p>
                     <div>
-                        <button class="btn btn-primary mx-3">Запустить</button>
-                        <button class="btn btn-primary">Остановить</button>
+                        <button class="btn btn-primary mx-3" [attr.disabled]="randomStartButton? true : null" (click)="getRandom()">Запустить</button>
+                        <button class="btn btn-primary" [attr.disabled]="randomStopButton? true : null" (click)="stopRandom()">Остановить</button>
                     </div>
                 </div>            
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item"*ngFor="let el of randomService.randomArray">{{el}}</li>                   
                 </ul>
             </div>
         </div>

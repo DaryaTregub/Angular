@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { interval } from 'rxjs';
 
 @Injectable({
@@ -9,15 +8,11 @@ export class RandomService {
 
   constructor() { }
 
-  randomArray:any[] = [];
-  min = 0
-  max= 1000
-  inserval$ = interval(2000)
+  randomArray: any[] = [];
 
-  setCounter(min:number, max:number) {
-    return new Observable((observer) => {          
-      this.randomArray.push( Math.random() * (max - min) + min)  
-        observer.next(this.randomArray);  
-    });
+  setRandom() {
+    const min: number = 0
+    const max: number = 1000
+    this.randomArray.push(Math.floor(Math.random() * (max - min) + min));
   }
 }
