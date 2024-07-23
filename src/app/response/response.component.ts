@@ -109,8 +109,21 @@ export class ResponseComponent implements OnInit {
     )
   }
 
-
-
+  
+getPost() {
+  this.responseServ.getPostId().subscribe(
+    {
+      next: (response: any) => {
+        this.result = response;
+        console.log(this.result)
+      },
+      error: (err: HttpErrorResponse) => {
+        this.error = err.message;
+        console.log(this.error)
+      }
+    }
+  )
+}
 
 
 }

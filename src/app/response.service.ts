@@ -9,6 +9,7 @@ export class ResponseService {
 
   postsUrl: string = 'https://jsonplaceholder.typicode.com/posts'
   commentsUrl: string = 'https://jsonplaceholder.typicode.com/comments'
+  id:number = 1
 
   constructor(
     private http: HttpClient,
@@ -39,8 +40,13 @@ export class ResponseService {
   }
   
   deletePost() {
-    const post_path:string = '/1';
+    const post_path:string = `/${this.id}`;
     return this.http.delete(this.postsUrl + post_path);
+  }
+
+  getPostId() {
+    const post_path:string = `/${this.id}`;
+    return this.http.get(this.postsUrl + post_path);
   }
 
 }
