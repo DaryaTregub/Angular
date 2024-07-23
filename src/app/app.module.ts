@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResponseComponent } from './response/response.component';
 import { SecondComponent } from './second/second.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
@@ -16,7 +17,7 @@ import { SecondComponent } from './second/second.component';
   declarations: [			
     AppComponent,
       ResponseComponent,   
-      SecondComponent
+      SecondComponent, ErrorPageComponent
    ],
   imports: [
     BrowserModule,

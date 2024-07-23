@@ -1,3 +1,10 @@
-<p>
- {{this.responseServe.second_result}}
-</p>
+<div class="container">    
+    <div class="card mt-5" style="">
+        <div class="card-header">
+            <h1>Second component</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of result |keyvalue">{{item.key}}: {{item.value}}</li>            
+        </ul>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResponseService } from '../response.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-response',
@@ -12,6 +13,7 @@ export class ResponseComponent implements OnInit {
 
   constructor(
     private responseServ: ResponseService,
+    private router: Router
 
   ) { }
   result = []
@@ -111,18 +113,7 @@ export class ResponseComponent implements OnInit {
 
   
 getPost() {
-  this.responseServ.getPostId().subscribe(
-    {
-      next: (response: any) => {
-        this.responseServ.second_result = response;
-        console.log(this.responseServ.second_result)
-      },
-      error: (err: HttpErrorResponse) => {
-        this.error = err.message;
-        console.log(this.error)
-      }
-    }
-  )
+this.router.navigateByUrl('/second');
 }
 
 
