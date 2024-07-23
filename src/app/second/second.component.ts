@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseService } from '../response.service';
 
 @Component({
   selector: 'app-second',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondComponent implements OnInit {
 
-  constructor() { }
+  constructor(public responseServe: ResponseService) { }
 
   ngOnInit() {
   }

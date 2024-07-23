@@ -114,8 +114,8 @@ getPost() {
   this.responseServ.getPostId().subscribe(
     {
       next: (response: any) => {
-        this.result = response;
-        console.log(this.result)
+        this.responseServ.second_result = response;
+        console.log(this.responseServ.second_result)
       },
       error: (err: HttpErrorResponse) => {
         this.error = err.message;

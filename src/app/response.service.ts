@@ -9,7 +9,8 @@ export class ResponseService {
 
   postsUrl: string = 'https://jsonplaceholder.typicode.com/posts'
   commentsUrl: string = 'https://jsonplaceholder.typicode.com/comments'
-  id:number = 1
+  id: number = 1
+  second_result = {}
 
   constructor(
     private http: HttpClient,
@@ -30,22 +31,22 @@ export class ResponseService {
   }
 
   getError() {
-    const url = this.postsUrl.substring(0, length-1);
+    const url = this.postsUrl.substring(0, length - 1);
     return this.http.get(url);
   }
 
   getPostsHeaders() {
     const post_headers = new HttpHeaders().set('X-Test', '1')
-    return this.http.get(this.postsUrl, {headers: post_headers, responseType: 'text'});
+    return this.http.get(this.postsUrl, { headers: post_headers, responseType: 'text' });
   }
-  
+
   deletePost() {
-    const post_path:string = `/${this.id}`;
+    const post_path: string = `/${this.id}`;
     return this.http.delete(this.postsUrl + post_path);
   }
 
   getPostId() {
-    const post_path:string = `/${this.id}`;
+    const post_path: string = `/${this.id}`;
     return this.http.get(this.postsUrl + post_path);
   }
 
