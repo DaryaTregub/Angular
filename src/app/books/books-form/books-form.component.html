@@ -1,0 +1,42 @@
+<div class="mt-5">
+    <h1 class="display-6 container my-5">Добавьте книгу</h1>
+    <form class="container my-auto" novalidate>
+        <div class="col-md-12 mb-3">
+            <label for="validationCustom01" class="form-label">Название книги</label>
+            <input type="text" class="form-control" id="validationCustom01" value="Введите название книги" name="title"
+                [(ngModel)]="booksServ.create_book.title" #title="ngModel" pattern="[а-яА-я]*" minlength="2"
+                maxlength='10' [ngClass]="{
+                    'is-invalid': title.invalid && (title.dirty || title.touched),
+                    'is-valid': title.valid
+                }" required>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger mt-1">
+                <div *ngIf="title.hasError('minlength')">Минимальная длина должна быть больше 2 символов</div>
+                <div *ngIf="title.hasError('required')">Поле должно быть заполненным</div>
+                <div *ngIf="title.hasError('pattern')">Поле не должно содержать латинские буквы, цифры, пробелы,
+                    спецсимволы</div>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <label for="validationCustom02" class="form-label">Автор книги</label>
+            <input type="text" class="form-control" id="validationCustom02" value="Введите название книги" name="author"
+                [(ngModel)]="booksServ.create_book.author" #author="ngModel" pattern="[а-яА-я]*"  minlength="2"
+                maxlength='10' [ngClass]="{
+                    'is-invalid': author.invalid && (author.dirty || author.touched),
+                    'is-valid': author.valid
+                }"required>
+            <div *ngIf="author.invalid && (author.dirty || author.touched)" class="text-danger mt-2">
+                <div *ngIf="author.hasError('minlength')">Минимальная длина должна быть больше 2 символов</div>
+                <div *ngIf="author.hasError('required')">Поле должно быть заполненным</div>
+                <div *ngIf="author.hasError('pattern')">Поле не должно содержать латинские буквы, цифры, пробелы,
+                    спецсимволы</div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="title.invalid || author.invalid"
+                (click)="booksServ.AddBooks()">
+                Добавить
+            </button>
+        </div>
+
+    </form>
+</div>
