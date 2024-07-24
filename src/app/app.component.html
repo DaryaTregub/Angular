@@ -1,5 +1,5 @@
 <div class="container ">
-    <form action="" class="mt-5">
+    <form action="" class="mt-5 mb-3">
         <input class="form-control mb-3" type="number" placeholder="Enter the number" aria-label="default input example" name="todo" required #todo="ngModel" [(ngModel)]="todosServ.id" 
         [ngClass]="{'is-invalid': todo.invalid && (todo.dirty || todo.touched),
         'is-valid': todo.valid}" >
@@ -7,6 +7,12 @@
             <button class="btn btn-primary" type="button" type="submit" [disabled]="todo.invalid"
             (click)="getAllTodos()">GetTodos</button>
         </div>
-    </form>      
-   <p>{{todosServ.result | json}}</p>
+    </form>  
+    <ul class="list-group" *ngIf="todosServ.result">
+        <li *ngIf="(todosServ.result | keyvalue)?.[0] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>
+        <li *ngIf="(todosServ.result | keyvalue)?.[1] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>       
+        <li *ngIf="(todosServ.result | keyvalue)?.[2] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>
+        <li *ngIf="(todosServ.result | keyvalue)?.[3] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>
+    </ul>    
+   <p *ngIf="todosServ.error">{{todosServ.error}}</p>
 </div>

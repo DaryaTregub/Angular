@@ -7,6 +7,13 @@ export class TodosService {
 
   constructor() { }
   id!: number
-  result: any
- 
+  result: {
+    completed: false;
+    id: number;
+    title: string;
+    userId: number;
+  } | undefined 
+  error!: string
+  
+
 }

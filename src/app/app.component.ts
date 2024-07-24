@@ -10,6 +10,7 @@ import { TodosService } from './todos.service';
 })
 export class AppComponent {
   title = 'myApp';
+Object: any;
 
   constructor(
     private responseServ: ResponseService,
@@ -23,11 +24,13 @@ export class AppComponent {
         next: (response: any) => {
           console.log(response)
           this.todosServ.result = response;
+          this.todosServ.error ='';
           console.log(this.todosServ);
         },
         error: (err: HttpErrorResponse) => {
           console.log(err.message)
-          this.todosServ.result = err.message;
+          this.todosServ.result = undefined;
+          this.todosServ.error = err.message;
           console.log(this.todosServ);
         }
       }
