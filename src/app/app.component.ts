@@ -23,10 +23,12 @@ export class AppComponent {
         next: (response: any) => {
           console.log(response)
           this.todosServ.result = response;
+          console.log(this.todosServ);
         },
         error: (err: HttpErrorResponse) => {
           console.log(err.message)
           this.todosServ.result = err.message;
+          console.log(this.todosServ);
         }
       }
     )
