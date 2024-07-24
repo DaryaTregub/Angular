@@ -4,25 +4,29 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BooksComponent } from './books/books.component';
-import { BooksFormComponent } from './books/books-form/books-form.component';
-import { BooksTableComponent } from './books/books-table/books-table.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ResponseService } from './response.service';
+import { TodosInterceptor } from './todos.interceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksComponent,
-    BooksFormComponent,
-    BooksTableComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  
-   FormsModule
+    AppRoutingModule,
+    FormsModule,
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
-   
+    ResponseService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TodosInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
