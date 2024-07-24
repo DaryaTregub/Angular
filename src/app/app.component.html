@@ -13,6 +13,8 @@
         <li *ngIf="(todosServ.result | keyvalue)?.[1] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>       
         <li *ngIf="(todosServ.result | keyvalue)?.[2] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>
         <li *ngIf="(todosServ.result | keyvalue)?.[3] as item"  class="list-group-item">{{item.key}}: {{item.value}}</li>
-    </ul>    
-   <p *ngIf="todosServ.error">{{todosServ.error}}</p>
+    </ul>   
+    <div class="alert alert-danger" role="alert" *ngIf="todosServ.error">
+        {{todosServ.error}}
+      </div> 
 </div>
