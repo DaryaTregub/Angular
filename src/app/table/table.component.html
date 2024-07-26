@@ -1,0 +1,20 @@
+<ng-container>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Count</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let el of tableServ.table_arr; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{el.name}}</td>
+        <td>{{el.count}}</td>
+        <td>{{el.price | currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

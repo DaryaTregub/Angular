@@ -4,25 +4,27 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BooksComponent } from './books/books.component';
-import { BooksFormComponent } from './books/books-form/books-form.component';
-import { BooksTableComponent } from './books/books-table/books-table.component';
+import { TableComponent } from './table/table.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
-    BooksComponent,
-    BooksFormComponent,
-    BooksTableComponent
-  ],
+      TableComponent,
+
+   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  
-   FormsModule
+    AppRoutingModule,
+    FormsModule,
+    NgbModule,
+    CommonModule 
   ],
   providers: [
-   
+
   ],
   bootstrap: [AppComponent]
 })
