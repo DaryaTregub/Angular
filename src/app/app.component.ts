@@ -1,16 +1,22 @@
 import { Component } from '@angular/core';
-import { BooksService } from './books.service';
+import { DataService } from './data.service';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
- 
+
 })
 export class AppComponent {
   title = 'myApp';
- 
-constructor(public booksServ: BooksService){}
+  logo = "Главная страница"
+  result = []
+  constructor(
+    public dataServ: DataService,
+    // private responseServ: ResponseService,
+    // private router: Router
+  ) { }
+  ngOnInit() {
+  }
 
- 
 }
