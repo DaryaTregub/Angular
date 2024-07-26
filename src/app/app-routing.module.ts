@@ -4,6 +4,7 @@ import { ErrorComponent } from './error/error.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { postsListResolver } from './posts-list.resolver';
 import { PostComponent } from './post/post.component';
+import { AccessRoleGuard } from './access-role.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   {
     path: 'posts-list',
     component: PostsListComponent,
+    canActivateChild: [AccessRoleGuard],
     resolve: [postsListResolver],
     children: [
       {
@@ -30,6 +32,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

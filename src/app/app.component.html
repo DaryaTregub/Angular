@@ -17,8 +17,8 @@
                                 Изменить роль
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">                                
-                                <li><a class="dropdown-item" href="#">Админ</a></li>
-                                <li><a class="dropdown-item" href="#">Пользователь</a></li>
+                                <li><button class="dropdown-item" (click)="dataServ.role ='admin'" [disabled]="dataServ.role === 'admin'">Админ</button></li>
+                                <li><button class="dropdown-item" (click)="dataServ.role ='user'" [disabled]="dataServ.role === 'user'">Пользователь</button></li>
                             </ul>
                         </li>
                     </ul>

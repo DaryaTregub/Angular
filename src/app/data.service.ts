@@ -7,6 +7,7 @@ import { PostsList } from './posts-list';
 export class DataService {
   role: 'user' | 'admin' = 'user';
   posts_list!: PostsList[]
+  post: any
 
   constructor() { }
 

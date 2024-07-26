@@ -1,6 +1,7 @@
 <div class="list-group">
-  <a (click)="getPostId(el.id)" class="list-group-item list-group-item-action"
+  <a routerLink="/posts-list/{{el.id}}" class="list-group-item list-group-item-action"
     *ngFor="let el of dataServ.posts_list; index as i">
-    {{i+1}}. {{el.title[0] | uppercase}}{{el.title.substring(1, el.title.length)}}
+    {{i+1}}. {{el.title| capitalize }}
   </a>
 </div>
+<router-outlet></router-outlet>

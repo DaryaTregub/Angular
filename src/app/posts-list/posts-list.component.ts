@@ -3,6 +3,8 @@ import { ResponceService } from '../responce.service';
 import { DataService } from '../data.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
@@ -14,7 +16,9 @@ export class PostsListComponent implements OnInit {
     public responseServe: ResponceService,
     private routes: ActivatedRoute,
     public dataServ: DataService,
-    private router: Router
+    private router: Router,
+    private respServ: ResponceService
+
   ) { }
 
   ngOnInit() {
@@ -23,8 +27,9 @@ export class PostsListComponent implements OnInit {
       console.log(this.dataServ.posts_list)
     })
   }
+  // getPost(value: number) {
+  //   console.log(`${this.respServ.postsUrl}/${value}`)
 
-  getPostId(value:number) {
-    
-  }
+  // }
+
 }
