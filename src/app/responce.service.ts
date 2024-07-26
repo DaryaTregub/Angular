@@ -7,12 +7,17 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class ResponceService {
 
   postsUrl: string = 'https://jsonplaceholder.typicode.com/posts'
+  post_id!: number
 
   constructor(
     private http: HttpClient
   ) { }
-  
+
   getPosts() {
     return this.http.get(this.postsUrl);
+  }
+
+  getPost() {
+    return this.http.get(this.postsUrl + `/${this.post_id}`);
   }
 }

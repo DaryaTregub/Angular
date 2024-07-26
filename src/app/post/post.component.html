@@ -1,3 +1,7 @@
-<p>
-  post works!
-</p>
+<div class="container mt-5 mb-5">
+  <h2>{{dataServ.post.title | capitalize}}</h2>
+  <p>{{dataServ.post.body | capitalize}}</p>
+  <button class="btn btn-dark" (click)="Edit()">Редактировать</button>
+</div>
+
+<router-outlet></router-outlet>

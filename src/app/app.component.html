@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <div class="me-auto"><a class="navbar-brand" href="/">{{logo}}</a></div>
+        <div class="d-flex">
+            <div class="me-auto">
+                <a class="navbar-brand" routerLink="/">{{logo}}</a>
+            </div>
+            <div class=""><a class="navbar-brand" routerLink="/posts">Список постов</a></div>
+        </div>
         <div class="d-flex">
             <p class="text-light m-auto me-3">Текущая роль: {{dataServ.role}}</p>
             <div>
@@ -16,9 +21,11 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Изменить роль
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">                                
-                                <li><button class="dropdown-item" (click)="dataServ.role ='admin'" [disabled]="dataServ.role === 'admin'">Админ</button></li>
-                                <li><button class="dropdown-item" (click)="dataServ.role ='user'" [disabled]="dataServ.role === 'user'">Пользователь</button></li>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><button class="dropdown-item" (click)="dataServ.role ='admin'"
+                                        [disabled]="dataServ.role === 'admin'">Админ</button></li>
+                                <li><button class="dropdown-item" (click)="dataServ.role ='user'"
+                                        [disabled]="dataServ.role === 'user'">Пользователь</button></li>
                             </ul>
                         </li>
                     </ul>

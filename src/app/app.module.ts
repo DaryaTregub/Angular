@@ -12,6 +12,7 @@ import { PostComponent } from './post/post.component';
 import { CapitalizePipe } from './capitalize.pipe';
 import { AccessRoleGuard } from './access-role.guard';
 import { DataService } from './data.service';
+import { EditComponent } from './post/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DataService } from './data.service';
     ErrorComponent,
     PostsListComponent,
     PostComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    EditComponent
   ],
   imports: [
     BrowserModule,

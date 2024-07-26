@@ -1,7 +1,7 @@
-<div class="list-group">
-  <a routerLink="/posts-list/{{el.id}}" class="list-group-item list-group-item-action"
-    *ngFor="let el of dataServ.posts_list; index as i">
-    {{i+1}}. {{el.title| capitalize }}
-  </a>
-</div>
+  <div class="list-group">
+    <a (click)="getPost(el.id)" class="list-group-item list-group-item-action"
+      *ngFor="let el of dataServ.posts_list; index as i">
+      {{i+1}}. {{el.title| capitalize }}
+    </a>
+  </div>
 <router-outlet></router-outlet>

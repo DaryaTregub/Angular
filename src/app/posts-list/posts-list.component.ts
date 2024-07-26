@@ -4,7 +4,6 @@ import { DataService } from '../data.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
@@ -27,9 +26,11 @@ export class PostsListComponent implements OnInit {
       console.log(this.dataServ.posts_list)
     })
   }
-  // getPost(value: number) {
-  //   console.log(`${this.respServ.postsUrl}/${value}`)
+  getPost(value: number) {
+    console.log(`posts/${value}`)
+    this.respServ.post_id = value;
+    this.router.navigateByUrl(`posts/${value}`);
 
-  // }
+  }
 
 }

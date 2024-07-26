@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Post } from './post';
 import { PostsList } from './posts-list';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { PostsList } from './posts-list';
 export class DataService {
   role: 'user' | 'admin' = 'user';
   posts_list!: PostsList[]
-  post: any
+  post!: Post 
 
   constructor() { }
 

@@ -5,11 +5,13 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { postsListResolver } from './posts-list.resolver';
 import { PostComponent } from './post/post.component';
 import { AccessRoleGuard } from './access-role.guard';
+import { postsResolver } from './post.resolver';
+import { EditComponent } from './post/edit/edit.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/posts-list',
+    redirectTo: '/posts',
     pathMatch: 'full',
   },
   {
@@ -17,17 +19,23 @@ const routes: Routes = [
     component: ErrorComponent
   },
   {
-    path: 'posts-list',
+    path: 'posts',
     component: PostsListComponent,
-    canActivateChild: [AccessRoleGuard],
     resolve: [postsListResolver],
+  },
+  {
+    path: 'posts/:id',
+    component: PostComponent,
+    resolve: [postsResolver],
+    canActivateChild: [AccessRoleGuard],
     children: [
       {
-        path: ':id',
-        component: PostComponent,
+        path: 'edit',
+        component: EditComponent
       },
     ]
-  }
+  },
+
 ];
 
 @NgModule({
