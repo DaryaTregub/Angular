@@ -1,0 +1,14 @@
+<form class="mb-5 mt-5" #todoForm="ngForm">
+    <div class="row align-items-center">
+        <div class="col-10">
+            <input type="text" class="form-control" id="exampleInputTask" placeholder="Введите задачу" name="todoInput"
+                #todoInput="ngModel" [(ngModel)]="task" required>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary w-100"
+                [disabled]="todoInput.invalid"
+                (click)="addTask(); todoForm.resetForm()">Добавить</button>
+        </div>
+    </div>
+
+</form>

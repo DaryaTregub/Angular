@@ -1,0 +1,16 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let el of taskServ.tasks_arr; index as i">
+        <div class="d-flex justify-content-between ">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <input type="checkbox" (change)="completeTask($event.target, i)" />
+                </div>
+                <p class="m-0">{{el.text}}</p>
+            </div>
+
+            <button type="button" class="btn btn-danger">
+                Delete
+            </button>
+        </div>
+    </li>
+</ul>
