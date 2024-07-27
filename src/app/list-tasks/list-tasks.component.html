@@ -3,13 +3,13 @@
         <div class="d-flex justify-content-between ">
             <div class="d-flex align-items-center">
                 <div class="me-3">
-                    <input type="checkbox" (change)="completeTask($event.target, i)" />
+                    <input type="checkbox" (change)="completeTask( i, $event.target)" />
                 </div>
                 <p class="m-0">{{el.text}}</p>
             </div>
 
-            <button type="button" class="btn btn-danger">
-                Delete
+            <button type="button" class="btn btn-danger" (click)="deleteTask(i)">
+                Удалить
             </button>
         </div>
     </li>

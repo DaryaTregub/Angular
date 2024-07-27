@@ -11,10 +11,14 @@ export class ListTasksComponent {
   constructor(
     public taskServ: TasksService
   ) { }
-  
-  completeTask(event: any, index:any) {
-    console.log(event.checked);
-    this.taskServ.updateTasks(index, event.checked)
- 
+
+  onInit() {
+  }
+
+  completeTask(index: any, event: any,) {
+    this.taskServ.updateTasks(index, event.checked);
+  }
+  deleteTask(index: number) {
+    this.taskServ.deleteTasks(index)
   }
 }

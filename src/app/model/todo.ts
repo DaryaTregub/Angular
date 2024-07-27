@@ -6,5 +6,5 @@ export interface Todo {
 
 export class TodoUpdate {
     static readonly type = `[Todos] : Todos Update`;
-    constructor(public payload : any) {}
+    constructor(public payload : Todo[]) {}
 }

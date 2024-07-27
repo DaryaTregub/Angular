@@ -10,7 +10,7 @@ import { TodoUpdate } from './model/todo';
 
 
 export class TasksService {
-  tasks_arr: Tasks[] = [];
+  tasks_arr!: Tasks[]
   task_text!: string
   task!: Tasks
   private taskId: number = 0;
@@ -25,18 +25,29 @@ export class TasksService {
       complited: false,
       text: this.task_text
     }
-    this.tasks_arr.push(this.task)   
+    this.tasks_arr = this.store.selectSnapshot(TodoState.todosState);
+    this.tasks_arr.push(this.task)
     this.store.dispatch(
       new TodoUpdate(this.tasks_arr)
     )
-    console.log(this.store.selectSnapshot(TodoState.todosState))
+    console.log(this.store.selectSnapshot(TodoState.todosState));
 
-    console.log(this.tasks_arr)
-  
   }
 
   updateTasks(index: number, check: boolean) {
+    this.tasks_arr = this.store.selectSnapshot(TodoState.todosState);
+    this.tasks_arr[index].complited = check;
+    this.store.dispatch(
+      new TodoUpdate(this.tasks_arr)
+    );
+  }
 
+  deleteTasks(index: number) {
+    this.tasks_arr = this.store.selectSnapshot(TodoState.todosState);
+    this.tasks_arr.splice(index, 1);
+    this.store.dispatch(
+      new TodoUpdate(this.tasks_arr)
+    );
   }
 
 }
