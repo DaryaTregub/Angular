@@ -1,1 +1,60 @@
-<p>registration works!</p>
+<div class="container">
+    <h2>Зарегистрируйте ваш аккаунт</h2>
+    <form class="row g-3 needs-validation" novalidate>
+        <div class="col-4">
+            <div>
+                <label for="validationCustom01" class="form-label">Логин</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="login" name="userlogin"
+                    #userlogin="ngModel" [(ngModel)]="createUser.userlogin" [ngClass]="{
+                        'is-invalid': userlogin.invalid && (userlogin.dirty || userlogin.touched),
+                        'is-valid': userlogin.valid
+                    }" required>
+                <div *ngIf="userlogin.invalid && (userlogin.dirty || userlogin.touched)">
+                    <div *ngIf="userlogin.hasError('required')" class="text-danger mt-1">
+                        Введите логин
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="validationCustom02" class="form-label">Пароль</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="password" [ngClass]="{
+                    'is-invalid': userpassword.invalid && (userpassword.dirty || userpassword.touched),
+                    'is-valid': userpassword.valid
+                }" name="userpassword" #userpassword="ngModel" [(ngModel)]="createUser.password" minlength="4"
+                    required>
+                <div *ngIf="userlogin.invalid && (userpassword.dirty || userpassword.touched)">
+                    <div class="text-danger mt-1" *ngIf="userpassword.hasError('required')">
+                        Введите пароль
+                    </div>
+                    <div class="text-danger mt-1" *ngIf="userpassword.hasError('minlength')">
+                        Пароль должен быть не менее 4 символов
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="validationCustomUsername" class="form-label">Имя </label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="validationCustomUsername" name="username"
+                        [(ngModel)]="createUser.username" #username="ngModel" aria-describedby="inputGroupPrepend">
+
+                </div>
+            </div>
+            <div>
+                <label for="validationCustom03" class="form-label">Фамилия</label>
+                <input type="text" class="form-control" id="validationCustom03" name="usersurname"
+                    [(ngModel)]="createUser.lastName" #usersurname="ngModel">
+
+            </div>
+            <div>
+                <label for="validationCustom05" class="form-label">Отчество (при наличии)</label>
+                <input type="text" class="form-control" id="validationCustom05" name="usersecondname"
+                    [(ngModel)]="createUser.middleName" #usersecondname="ngModel">
+
+            </div>
+            <div>
+                <button class="btn btn-primary" type="submit"
+                    [disabled]="userlogin.invalid || userpassword.invalid" (click)="completeRegistration()">Зарегистрироваться</button>
+            </div>
+        </div>
+    </form>
+</div>
