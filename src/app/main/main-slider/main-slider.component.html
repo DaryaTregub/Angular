@@ -1,0 +1,24 @@
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let el of mainServ.posts_list |slice:0:3 ">
+    <div class="wrapper" style="background-color: #E7FAFE;">
+      <div class="row">
+        <div class="col">
+          <h2>{{el.title}}</h2>
+          <p>{{el.body}}</p>
+          <div class="">{{el.timeCooking}}</div>
+          <div class="">{{el.tags[0]}}</div>
+          <div class="">
+            <div>
+              <img [src]=" el.author.avatar">
+
+            </div>
+            <div>{{el.createdOn}}</div>
+          </div>
+          <button class="btn btn-primary">Посмотреть</button>
+        </div>
+        <div class="col"><img [src]="el.image" alt="Random first slide"></div>
+      </div>
+    </div>
+
+  </ng-template>
+</ngb-carousel>
