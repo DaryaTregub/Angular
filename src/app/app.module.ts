@@ -13,6 +13,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { MainSliderComponent } from './main/main-slider/main-slider.component';
+import { RecipeComponent } from './recipes/recipe/recipe.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MainSliderComponent } from './main/main-slider/main-slider.component';
     RegistrationComponent,
       NavbarComponent,
       MainComponent,
-      MainSliderComponent
+      MainSliderComponent,
+      RecipeComponent
    ],
   imports: [
     BrowserModule,

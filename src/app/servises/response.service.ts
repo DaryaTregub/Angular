@@ -15,6 +15,7 @@ export class ResponseService {
   registration = '/api/cooking-blog/users/registration'
   autorization = '/api/cooking-blog/users/sign'
   allposts = `/api/cooking-blog/posts`
+  uuid!: string
 
   postRegistration(data: Registration) {
     return this.http.post(this.url + this.registration, data)
@@ -27,6 +28,9 @@ export class ResponseService {
   getPosts() {
     const baseParams = new HttpParams().set('filter', '6');
     return this.http.get(this.url + this.allposts, { params: baseParams });
+  }
+  getPost(uuid: string) {
+    return this.http.get(this.url + this.allposts + '/' + uuid);
   }
 
 }
