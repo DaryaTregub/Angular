@@ -5,17 +5,20 @@ import { RegistrationComponent } from './registration/registration.component';
 import { compose } from '@ngxs/store/operators';
 import { RecipesComponent } from './recipes/recipes/recipes.component';
 import { ErrorPageComponent } from './error/error.component';
+import { main } from '@popperjs/core';
+import { MainComponent } from './main/main.component';
+import { MainResolver } from './main.resolver';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/registration',
-    pathMatch: 'full',
+    component: MainComponent,
+    resolve: [MainResolver]
   },
   {
     path: 'registration',
-    component: RegistrationComponent,  
+    component: RegistrationComponent,
   },
   {
     path: 'autorization',

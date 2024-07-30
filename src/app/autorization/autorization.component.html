@@ -1,1 +1,55 @@
-<p>autorization works!</p>
+<div class="container">
+  
+    <div class="row justify-content-center align-items-center">
+        <div class="col"></div>
+        <div class="col">
+            <h2>Войдете в ваш аккаунт</h2>
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="">
+                    <label for="validationCustom01" class="form-label">Логин</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="userlogin" #userlogin="ngModel" [(ngModel)]="user.username" [ngClass]="{
+                        'is-invalid': userlogin.invalid && (userlogin.dirty || userlogin.touched),
+                        'is-valid': userlogin.valid
+                    }" required>
+                    <div *ngIf="userlogin.invalid && (userlogin.dirty || userlogin.touched)">
+                        <div *ngIf="userlogin.hasError('required')" class="text-danger mt-1">
+                            Введите логин
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <label for="validationCustom02" class="form-label">Пароль</label>
+                    <input type="password" class="form-control" id="validationCustom02" [ngClass]="{
+                        'is-invalid': userpassword.invalid && (userpassword.dirty || userpassword.touched),
+                        'is-valid': userpassword.valid
+                    }" name="userpassword" #userpassword="ngModel" [(ngModel)]="user.password" minlength="4" required>
+                    <div *ngIf="userlogin.invalid && (userpassword.dirty || userpassword.touched)">
+                        <div class="text-danger mt-1" *ngIf="userpassword.hasError('required')">
+                            Введите пароль
+                        </div>
+                        <div class="text-danger mt-1" *ngIf="userpassword.hasError('minlength')">
+                            Пароль должен быть не менее 4 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-check ms-2">
+                        <input class="form-check-input" type="checkbox" name="check" [(ngModel)]="isChecked" >
+                        <p>Быстрая сессия</p>
+                    </div>                
+                    <div class="col">
+                        <a routerLink="/registration">Зарегистрироваться</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100" type="submit" (click)="autorize()" >Вход</button>
+                </div>
+                <p class="text-center lines ms-2 me-2">Или войти через</p>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100" type="submit">Гитхаб</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

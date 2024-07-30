@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RegistrationService } from '../servises/registration.service';
+import { Registration } from '../interfaces/registration';
+
 
 @Component({
   selector: 'app-registration',
@@ -11,8 +13,7 @@ export class RegistrationComponent {
 
   }
 
-  createUser = {
-    userlogin: '',
+  createUser: Registration = {   
     username: '',
     password: '',
     firstName: '',

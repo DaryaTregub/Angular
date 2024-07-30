@@ -1,0 +1,33 @@
+.lines {
+    position: relative;
+}
+
+.lines:before {
+    content: "";
+    display: block;
+    max-width: 150px;
+    width: 100%;
+    height: 1px;
+    background: #D1D5DB;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: -2;
+}
+
+.lines:after {
+    content: "";
+    display: block;
+    max-width: 150px;
+    width: 100%;
+    height: 1px;
+    background: #D1D5DB;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: -2;
+}
+
+span {
+    background: #fff
+}
