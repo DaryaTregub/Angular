@@ -12,14 +12,10 @@ export class MainTryComponent implements OnInit {
   constructor(public mainServ: MainService) { }
   title = "Попробуйте эти вкусные рецепты"
   description = "Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqut enim ad minim"
-  result!: LikePosts[]
-  random_arr!: LikePosts[]
+
   ngOnInit() {
-    this.random_arr = this.mainServ.createRandomArr();
-    this.result = this.random_arr.slice(0, 4);
+ 
   }
-  checkLike(id: number, uuid: string) {
-    this.result[id].like = !this.result[id].like
-  }
+ 
 
 }

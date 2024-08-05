@@ -67,7 +67,8 @@
     <h3>Прочие рецепты</h3>
     <div>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let el of random_arr;index as i "> <a (click)="mainServ.getPost(el.id)">
+        <li class="list-group-item" *ngFor="let el of this.mainServ.posts_list | random | slice:0:3;index as i "> <a
+            (click)="mainServ.getPost(el.id)">
             <div class="row">
               <div class="col"><img [src]="el.image" class="card-img-top"></div>
               <div class="col">
@@ -102,10 +103,10 @@
 <div class="mb-3">
   <h3 class="text-center">Возможно вам понравятся эти рецепты</h3>
   <div class="row">
-    <div class="col-3" *ngFor="let el of like_recipe_arr; index as i">
+    <div class="col-3" *ngFor="let el of this.mainServ.posts_list | random |slice:0:4; index as i">
       <div class="card relative" style="width: 18rem;">
         <div class="absolute" style="top: 5px; right:0">
-          <button data-toggle="button" (click)=" checkLike(i)" aria-pressed="false">
+          <button data-toggle="button" (click)=" mainServ.checkLike(el.id)" aria-pressed="false">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg "
               *ngIf="!el.like">
               <path
@@ -152,8 +153,9 @@
   <div>
     <p>Ваш комментарий</p>
     <div class="form-floating">
-      <textarea name="user_comment" [(ngModel)]="user_comment" class="form-control" placeholder="Leave a comment here" id="floatingTextarea">        
-      </textarea>      
+      <textarea name="user_comment" [(ngModel)]="user_comment" class="form-control" placeholder="Leave a comment here"
+        id="floatingTextarea">
+      </textarea>
       <button type="submit" class="btn btn-primary" (click)="postComment()">Отправить</button>
     </div>
   </div>

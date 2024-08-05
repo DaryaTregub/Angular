@@ -12,10 +12,11 @@ import { MainSubscribeComponent } from './main-subscribe/main-subscribe.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { RandomPipe } from '../pipes/random.pipe';
 
 @NgModule({
   declarations: [
-    
+    RandomPipe,
     MainComponent,
     MainSliderComponent,
     MainBestRecipeComponent,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, TitleStrategy } from '@angular/router';
 import { Posts } from '../interfaces/posts';
 import { ResponseService } from './response.service';
 import { Post } from '../interfaces/post';
@@ -7,6 +7,8 @@ import { AuthState } from '../store/auth.state';
 import { Store } from '@ngxs/store';
 import { RandomArr } from '../others/random-arr';
 import { LikePosts } from '../interfaces/like-posts';
+import { HttpErrorResponse } from '@angular/common/http'
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +26,15 @@ export class MainService {
   posts_list!: LikePosts[];
   post_id!: number
   post!: Post
-  user_comment:any
+  text_comment: any
+  result!: LikePosts[];
+  clear_area = false
+  
 
-
-  getPost( i:string) {
+  getPost(i: string) {
     this.responceServ.post_uuid = i;
-    const id = this.posts_list.findIndex(el=> el.id===i);
-    this.router.navigateByUrl(`/recipes/${i}`);
+    const id = this.posts_list.findIndex(el => el.id === i);
+    this.router.navigateByUrl(`/recipes/${id}`);
   }
 
   getUser() {
@@ -45,7 +49,37 @@ export class MainService {
   }
 
   postUserComment() {
-  //  this.responceServ
+    console.log(this.post.id)
+    this.responceServ.text_comment = this.text_comment;
+    this.responceServ.postComment().subscribe(
+      {
+        next: (response: any) => {
+          this.result = (response[0]);
+          console.log(this.result)
+          if (!this.result) {
+            this.responceServ.post_uuid = this.post.id;
+            this.responceServ.getPost().subscribe({
+              next: (response: any) => {
+                this.post = response;             
+              },
+              error: (err: HttpErrorResponse) => {
+                console.log(err.message)
+              }
+            })
+          }
+
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err.message)
+        }
+      })
+
   }
-  
+
+  checkLike(id: string) {
+    const post_id = this.posts_list.findIndex(el => el.id === id);
+    this.posts_list[post_id].like = !this.posts_list[post_id].like;
+  }
+
+
 }

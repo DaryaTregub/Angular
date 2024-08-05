@@ -7,10 +7,10 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-3" *ngFor="let el of result; index as i">
+  <div class="col-3" *ngFor="let el of mainServ.posts_list; index as i">
     <div class="card relative" style="width: 18rem;">
       <div class="absolute" style="top: 5px; right:0">
-        <button data-toggle="button" (click)=" checkLike(i, el.id)" aria-pressed="false">
+        <button data-toggle="button" (click)=" mainServ.checkLike(el.id)" aria-pressed="false">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg "
             *ngIf="!el.like">
             <path

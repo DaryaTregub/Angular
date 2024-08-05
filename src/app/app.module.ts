@@ -20,6 +20,8 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { AuthState } from './store/auth.state';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { RandomPipe } from './pipes/random.pipe';
+
 
 
 
@@ -33,7 +35,8 @@ import { RecipesComponent } from './recipes/recipes.component';
     NavbarComponent,
     RecipeComponent,
     CreateRecipeComponent,
-    RecipesComponent
+    RecipesComponent,
+    RandomPipe
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { RecipesComponent } from './recipes/recipes.component';
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule,
     AdministrationPanelModule,
-    MainModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

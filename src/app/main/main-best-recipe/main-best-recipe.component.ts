@@ -4,6 +4,7 @@ import { MainService } from 'src/app/servises/main.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 
+
 import { Post } from 'src/app/interfaces/post';
 
 
@@ -27,23 +28,19 @@ export class MainBestRecipeComponent implements OnInit {
   btn_add: boolean = true
   random_arr!: LikePosts[]
   likes: any
-
+  count!: number
 
   ngOnInit() {
-    this.random_arr = this.mainServ.createRandomArr();
-    this.result = this.random_arr.slice(0, 3);
-    // this.likes = this.store.selectSnapshot(LikesState.getLikes).likes_arr
-    // this.createLikes.getLikes()
-
+    this.count = 3
   }
 
   addRecipeList() {
-    this.result = this.random_arr.slice(0, 6);
+    this.count = 6;
     this.btn_add = false;
   }
 
   checkLike(id: number, uuid: string) {
-    this.result[id].like = !this.result[id].like
+    // this.result[id].like = !this.result[id].like
     // const like = this.result[id].like
     // const arr = this.mainServ.posts_list
     // let el_id = arr.findIndex((arr: { id: string; }) => arr.id === uuid)

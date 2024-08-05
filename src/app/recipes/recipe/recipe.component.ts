@@ -3,6 +3,7 @@ import { MainService } from 'src/app/servises/main.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LikePosts } from 'src/app/interfaces/like-posts';
+import { RandomPipe } from 'src/app/pipes/random.pipe';
 
 
 @Component({
@@ -17,8 +18,7 @@ export class RecipeComponent implements OnInit {
     public mainServ: MainService,
     private routes: ActivatedRoute,
   ) { }
-  random_arr!: LikePosts[]
-  like_recipe_arr!: LikePosts[]
+
   user_comment!: string
 
 
@@ -33,23 +33,23 @@ export class RecipeComponent implements OnInit {
           console.log(err.message)
         }
       })
-    this.like_recipe_arr = this.mainServ.createRandomArr().slice(0, 4);
-    this.random_arr = this.mainServ.createRandomArr().slice(0, 3);
   }
 
   completeStep(i: number) {
     this.mainServ.post.cookingSteps[i].check = !this.mainServ.post.cookingSteps[i].check;
+
   }
 
-  checkLike(id: number) {
-    this.like_recipe_arr[id].like = !this.like_recipe_arr[id].like;
+  checkLike(id: string) {
+    const post_id = this.mainServ.posts_list.findIndex(el => el.id === id);
+    this.mainServ.posts_list[post_id].like = !this.mainServ.posts_list[post_id].like;
   }
+
   postComment() {
     if (this.user_comment) {
-      this.mainServ.user_comment = {
-        "text": `${this.user_comment}`
-      }
-      this.mainServ.postUserComment()
+      this.mainServ.text_comment = this.user_comment;
+      this.mainServ.postUserComment();
+      this.user_comment = ''
     }
   }
 }

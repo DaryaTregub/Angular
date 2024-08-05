@@ -22,9 +22,11 @@ export class ResponseService {
   post_uuid!: string
   users = '/api/cooking-blog/users'
   user_uuid!: string
-  post_comment =''
- 
- 
+  add_comment = `/add-comment`
+  text_comment!: {
+    text: string
+  }
+
 
   getToken() {
     return this.store.selectSnapshot(AuthState.getToken);
@@ -55,14 +57,21 @@ export class ResponseService {
   }
   getUser() {
     const token = this.getToken();
-    const post_headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);   
-    return this.http.get(this.url + this.users+ `/${this.user_uuid}`,
-    { headers: post_headers }
+    const post_headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.url + this.users + `/${this.user_uuid}`,
+      { headers: post_headers }
     )
   }
   postComment() {
-return this.http.post(this.url+ )
+    const token = this.getToken();
+    const comment = {
+      "text": `${this.text_comment}`
+    }
+    const post_headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.url + this.allposts + `/${this.post_uuid}` + this.add_comment, comment,
+      { headers: post_headers }
+    )
   }
-  
+
 
 }
