@@ -26,10 +26,9 @@ export class MainService {
   post!: Post
 
 
-  getPost(i: number) {
-    this.post_id = i
-    this.responceServ.post_uuid = this.posts_list[this.post_id].id
-    i += 1;
+  getPost( i:string) {
+    this.responceServ.post_uuid = i;
+    const id = this.posts_list.findIndex(el=> el.id===i);
     this.router.navigateByUrl(`/recipes/${i}`);
   }
 

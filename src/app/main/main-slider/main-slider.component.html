@@ -3,7 +3,7 @@
     <ng-template ngbSlide *ngFor="let el of mainServ.posts_list |slice:0:3; index as i">
       <div class="wrapper" style="background-color: #E7FAFE;">
         <div class="row">
-          <div class="col">
+          <div class="col w-50">
             <h2>{{el.title}}</h2>
             <p>{{el.body}}</p>
             <div class="">{{el.timeCooking}}</div>
@@ -15,11 +15,11 @@
               <div>{{el.createdOn}}</div>
             </div>
             <div style="margin-left: 500px;">
-              <button class="btn btn-primary" (click)="mainServ.getPost(i)">Посмотреть</button>
+              <button class="btn btn-primary" (click)="mainServ.getPost(el.id)">Посмотреть</button>
             </div>
 
           </div>
-          <div class="col"><img [src]="el.image" alt="Random first slide"></div>
+          <div class="col w-50"><img [src]="el.image" alt="Random first slide"></div>
         </div>
       </div>
     </ng-template>

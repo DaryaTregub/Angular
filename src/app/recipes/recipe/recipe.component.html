@@ -1,27 +1,92 @@
-  <h1>{{mainServ.post.title}}</h1>
-  <div class="row">
-    <div class="col-8">
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <img [src]="mainServ.post.author.avatar" class="card-img-top">
-            </div>
-            <div class="col">
-              <div>{{mainServ.post.author.firstName}} {{mainServ.post.author.lastName}}</div>
-              <div>{{mainServ.post.createdOn}}</div>
-            </div>
+<h1>{{mainServ.post.title}}</h1>
+<div class="row">
+  <div class="col-8">
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <img [src]="mainServ.post.author.avatar" class="card-img-top">
+          </div>
+          <div class="col">
+            <div>{{mainServ.post.author.firstName}} {{mainServ.post.author.lastName}}</div>
+            <div>{{mainServ.post.createdOn}}</div>
           </div>
         </div>
-        <div class="col">
-          <div>Время приготовления:</div>
-          <div> {{mainServ.post.timeCooking}}</div>
-        </div>
-        <div class="col">{{mainServ.post.tags}}</div>
+      </div>
+      <div class="col">
+        <div>Время приготовления:</div>
+        <div> {{mainServ.post.timeCooking}}</div>
+      </div>
+      <div class="col">{{mainServ.post.tags}}</div>
+    </div>
+    <div>
+      <img [src]="mainServ.post.image" class="card-img-top">
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="p-3" style="background-color: #E7FAFE; border-radius: 10%;">
+      <div>
+        <h4>Пищевая ценность</h4>
+        <table class="table-primary">
+          <tbody>
+            <tr>
+              <td>Калории</td>
+              <td>{{mainServ.post.foodValue.calories}}</td>
+            </tr>
+            <tr>
+              <td>Жиры</td>
+              <td>{{mainServ.post.foodValue.fats}}</td>
+            </tr>
+            <tr>
+              <td>Углеводы</td>
+              <td>{{mainServ.post.foodValue.carbohydrates}}</td>
+            </tr>
+            <tr>
+              <td>Белки</td>
+              <td>{{mainServ.post.foodValue.proteins}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div>
-        <img [src]="mainServ.post.image" class="card-img-top">
+        <p>Значения приблизительные</p>
       </div>
     </div>
-    <div class="col-4"></div>
   </div>
+</div>
+<p class="mb-3">{{mainServ.post.body}}</p>
+<div class="row mb-3">
+  <div class="col-8">
+    <h3>Ингредиенты</h3>
+    <p>Что вам пригодится</p>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let el of mainServ.post.ingredients">{{el.title}} {{el.description}}</li>
+    </ul>
+  </div>
+  <div class="col-4">
+    <h3>Прочие рецепты</h3>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let el of random_arr;index as i "> <a (click)="mainServ.getPost(el.id)">
+            <div class="row">
+              <div class="col"><img [src]="el.image" class="card-img-top"></div>
+              <div class="col">
+                <h6>{{el.title}}</h6>
+                <p> От {{el.author.firstName}} {{el.author.lastName}}</p>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div>
+  <h3>Шаги приготовления</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let step of  mainServ.post.cookingSteps;">
+      <p></p>
+      
+    </li>
+  </ul>
+</div>
