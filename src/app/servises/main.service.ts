@@ -24,6 +24,7 @@ export class MainService {
   posts_list!: LikePosts[];
   post_id!: number
   post!: Post
+  user_comment:any
 
 
   getPost( i:string) {
@@ -43,5 +44,8 @@ export class MainService {
     return random_arr;
   }
 
+  postUserComment() {
+  //  this.responceServ
+  }
   
 }

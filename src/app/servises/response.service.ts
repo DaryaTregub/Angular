@@ -22,6 +22,7 @@ export class ResponseService {
   post_uuid!: string
   users = '/api/cooking-blog/users'
   user_uuid!: string
+  post_comment =''
  
  
 
@@ -58,6 +59,9 @@ export class ResponseService {
     return this.http.get(this.url + this.users+ `/${this.user_uuid}`,
     { headers: post_headers }
     )
+  }
+  postComment() {
+return this.http.post(this.url+ )
   }
   
 

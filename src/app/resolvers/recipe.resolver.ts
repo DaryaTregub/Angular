@@ -19,7 +19,7 @@ export class RecipeResolver implements Resolve<boolean> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.responceServ.getPost().pipe(
       tap(
-        (res: any) => of(res),
+        (res: any) => of(res.cookingSteps.map((el: { check: boolean; } )=> {el.check = false})),
         (err: any) => {
           return this.router.navigate(['error']);
         })
