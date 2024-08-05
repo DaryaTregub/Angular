@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/servises/main.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recipe',
@@ -15,9 +16,15 @@ export class RecipeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.routes.data.subscribe((responce: any) => {
-      this.mainServ.post = responce[0];
-      console.log(this.mainServ.posts_list)     
-    })
+    this.routes.data.subscribe(
+      {
+        next: (response: any) => {
+          this.mainServ.post = (response[0]);
+          console.log(this.mainServ.post)
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err.message)
+        }
+      })
   }
 }

@@ -8,6 +8,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./main-slider.component.css']
 })
 export class MainSliderComponent implements OnInit {
+console: any;
   
   constructor(
     public mainServ: MainService,
@@ -20,9 +21,7 @@ export class MainSliderComponent implements OnInit {
   ngOnInit() {
     
   }
- getPost(i:number) {
-  console.log(i)
- }
+
 }
 
 

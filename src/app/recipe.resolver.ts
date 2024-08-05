@@ -17,7 +17,7 @@ export class RecipeResolver implements Resolve<boolean> {
     private mainServ: MainService
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.responceServ.getPost(this.mainServ.postId).pipe(
+    return this.responceServ.getPost().pipe(
       tap(
         (res: any) => of(res),
         (err: any) => {

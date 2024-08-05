@@ -1,21 +1,58 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <a class="navbar-brand" routerLink="/">{{appServ.title}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">Главная</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/recipes">Каталог рецептов</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-space-between ">
+
+      <li class="nav-item d-flex ">
+        <a class="nav-link active" aria-current="page" routerLink="/">Главная</a>
+        <a class="nav-link" routerLink="/recipes">Каталог рецептов</a>
+      </li>
+
+
+    </ul>
+    <div><button class="btn btn-outline-success" type="submit" routerLink="/autorization">Вход в аккаунт</button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Изменить роль
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li class="ms-3">Вы вошли как {{currentAuth.username}}</li>
+            <li><button class="dropdown-item">Настройка аккаунта</button></li>
+            <li><button class="dropdown-item" routerLink="/admin/users">Администрирование</button></li>
+            <li><button class="dropdown-item" (click)="appServ.toExit()">Выход</button></li>
+          </ul>
         </li>
       </ul>
-      <button class="btn btn-outline-success" type="submit" routerLink="/autorization">Вход в аккаунт</button>
     </div>
   </div>
 </nav>
+
+
 <router-outlet></router-outlet>
+<footer class="foodie-footer">
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        © 2023 Foodie, Все права защищены.
+      </div>
+      <div class="col">
+        <a href=""> <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M60 2C54.477 2 50 6.484 50 12.017C50 16.442 52.865 20.197 56.839 21.521C57.339 21.613 57.521 21.304 57.521 21.038C57.521 20.801 57.513 20.17 57.508 19.335C54.726 19.94 54.139 17.992 54.139 17.992C53.685 16.834 53.029 16.526 53.029 16.526C52.121 15.906 53.098 15.918 53.098 15.918C54.101 15.988 54.629 16.95 54.629 16.95C55.521 18.48 56.97 18.038 57.539 17.782C57.631 17.135 57.889 16.694 58.175 16.444C55.955 16.191 53.62 15.331 53.62 11.493C53.62 10.4 54.01 9.505 54.649 8.805C54.546 8.552 54.203 7.533 54.747 6.155C54.747 6.155 55.587 5.885 57.497 7.181C58.3128 6.95851 59.1544 6.84519 60 6.844C60.85 6.848 61.705 6.959 62.504 7.181C64.413 5.885 65.251 6.154 65.251 6.154C65.797 7.533 65.453 8.552 65.351 8.805C65.991 9.505 66.379 10.4 66.379 11.493C66.379 15.341 64.04 16.188 61.813 16.436C62.172 16.745 62.491 17.356 62.491 18.291C62.491 19.629 62.479 20.71 62.479 21.038C62.479 21.306 62.659 21.618 63.167 21.52C65.1583 20.8521 66.8893 19.5753 68.1155 17.87C69.3416 16.1648 70.0009 14.1173 70 12.017C70 6.484 65.522 2 60 2Z"
+              fill="#9CA3AF" />
+          </svg></a>
+        <a href=""><svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M108 2C102.48 2 98 6.48 98 12C98 17.52 102.48 22 108 22C113.51 22 118 17.52 118 12C118 6.48 113.51 2 108 2ZM114.605 6.61C115.836 8.10931 116.517 9.98437 116.535 11.924C116.254 11.87 113.434 11.295 110.592 11.653C110.527 11.512 110.472 11.36 110.408 11.208C110.231 10.791 110.043 10.3789 109.844 9.972C112.989 8.692 114.421 6.848 114.605 6.61ZM108 3.475C110.17 3.475 112.154 4.288 113.662 5.623C113.51 5.839 112.219 7.564 109.182 8.703C107.783 6.133 106.232 4.028 105.993 3.703C106.651 3.54922 107.324 3.4727 108 3.475ZM104.367 4.278C105.511 5.86431 106.569 7.51175 107.534 9.213C103.542 10.276 100.017 10.253 99.638 10.253C99.9128 8.96013 100.483 7.74822 101.303 6.71179C102.123 5.67537 103.172 4.84245 104.367 4.278ZM99.453 12.01V11.75C99.823 11.76 103.965 11.815 108.228 10.535C108.478 11.012 108.705 11.5 108.922 11.988C108.813 12.021 108.694 12.053 108.586 12.086C104.182 13.506 101.839 17.389 101.644 17.715C100.234 16.1495 99.4526 14.117 99.453 12.01ZM108 20.547C106.101 20.5502 104.257 19.9164 102.761 18.747C102.913 18.432 104.649 15.091 109.464 13.41C109.486 13.4 109.497 13.4 109.518 13.388C110.33 15.4834 110.941 17.6516 111.341 19.863C110.286 20.317 109.149 20.5498 108 20.547ZM112.761 19.082C112.675 18.562 112.219 16.067 111.102 12.998C113.781 12.575 116.124 13.269 116.416 13.367C116.234 14.5201 115.815 15.623 115.186 16.6065C114.557 17.59 113.731 18.4328 112.761 19.082Z"
+              fill="#9CA3AF" />
+          </svg></a>
+
+      </div>
+    </div>
+  </div>
+</footer>

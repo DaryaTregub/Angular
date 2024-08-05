@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from '../servises/main.service';
 
 @Component({
   selector: 'app-recipes',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public mainServ: MainService
+  ) { }
 
   ngOnInit() {
+    console.log(this.mainServ.posts_list)
   }
 
 }

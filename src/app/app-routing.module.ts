@@ -10,6 +10,17 @@ import { MainComponent } from './main/main.component';
 import { MainResolver } from './main.resolver';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { RecipeResolver } from './recipe.resolver';
+import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
+import { UsersComponent } from './administration-panel/panel/admin-users/users.component';
+import { UsersResolver } from './users.resolver';
+import { UserComponent } from './administration-panel/panel/admin-user/user.component';
+import { UserResolver } from './user.resolver';
+import { AdminRecipesComponent } from './administration-panel/panel/admin-recipes/admin-recipes.component';
+import { PanelComponent } from './administration-panel/panel/panel.component';
+import { AdminRecipesResolver } from './admin-recipes.resolver';
+import { AdminRecipeResolver } from './admin-recipe.resolver';
+import { AdminRecipeComponent } from './administration-panel/panel/admin-recipe/admin-recipe.component';
+
 
 
 const routes: Routes = [
@@ -29,18 +40,63 @@ const routes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
-    children: [
-      {
-        path: ':id',
-        component: RecipeComponent,
-        resolve: [RecipeResolver]
-      }
-    ]
+    resolve: [MainResolver],
+  },
+
+  {
+    path: 'recipes/:id',
+    component: RecipeComponent,
+    resolve: [RecipeResolver]
+
   },
   {
     path: 'error',
     component: ErrorPageComponent
-  }
+  },
+  {
+    path: 'create-recipe',
+    component: CreateRecipeComponent,
+    resolve: [RecipeResolver]
+  },
+
+  {
+    path: 'admin',
+    component: PanelComponent,
+
+    children: [
+      {
+        path: 'users',
+        component: UsersComponent,
+        resolve: [UsersResolver],
+      },
+      {
+        path: 'recipes',
+        component: AdminRecipesComponent,
+        resolve: [AdminRecipesResolver]
+      }
+    ]
+  },
+  {
+    path: 'admin/recipes/:id',
+    component: AdminRecipeComponent,
+    resolve: [AdminRecipeResolver]
+  },
+  {
+    path: 'admin/users/:id',
+    component: UserComponent,
+    resolve: [UserResolver]
+  },
+  // {
+  //   path: 'admin/users',
+  //   component: UsersComponent,
+  //   resolve: [UsersResolver]
+  // },
+  // {
+  //   path: 'admin/users/:id',
+  //   component: UserComponent,
+  //   resolve: [UserResolver]
+  // },
+
 
 
 

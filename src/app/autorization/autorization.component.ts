@@ -8,16 +8,16 @@ import { AutorizationService } from '../servises/autorization.service';
   styleUrls: ['./autorization.component.css']
 })
 export class AutorizationComponent {
-  
+
   user: Autorization = {
     username: '',
     password: ''
   }
   isChecked: boolean = false
 
-  constructor(private autorizationServ: AutorizationService) {}
-  
+  constructor(private autorizationServ: AutorizationService) { }
+
   autorize() {
-    this.autorizationServ.authorizeUser(this.user, this.isChecked)
+    this.autorizationServ.authorizeUser(this.user, this.isChecked);
   }
 }
