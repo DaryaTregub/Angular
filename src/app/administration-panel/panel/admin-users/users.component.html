@@ -1,0 +1,6 @@
+<p>users works!</p>
+<div *ngFor="let el of usersServ.users_list; index as i">
+    <p>{{el.username}}</p>
+    <button class="btn btn-primary" (click)="loadUser(i)">Редактировать</button>
+</div>
+<router-outlet></router-outlet>

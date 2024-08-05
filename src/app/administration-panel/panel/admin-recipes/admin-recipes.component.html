@@ -1,0 +1,4 @@
+<p>admin-recipes works!</p>
+<div *ngFor="let el of recipesServ.recipes_list; index as i">
+    <button class="btn btn-[rimary" (click)="recipesServ.getRecipe(i)">Редактировать</button>
+</div>
