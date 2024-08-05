@@ -1,3 +1,25 @@
-<p>
-  main-subscribe works!
-</p>
+<div class="row">
+  <div class="col-7">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+  </div>
+  <div class="col-5">
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="row">
+        <div class="col">
+          <input type="email" class="form-control" id="validationCustom01" placeholder=" Введите ваш email..."
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" name="usermail"
+            #usermail="ngModel" [(ngModel)]="email" [ngClass]="{
+              'is-invalid': usermail.invalid && (usermail.dirty || usermail.touched),
+              'is-valid': usermail.valid
+          }" required>
+          <div *ngIf="usermail.invalid && (usermail.dirty || usermail.touched )">
+            <div *ngIf="usermail.hasError('required')" class="text-danger mt-1">
+            </div>           
+          </div>
+        </div>
+        <div class="col"><button class="btn btn-primary" [disabled]='!usermail.valid'>Подписаться</button></div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -13,11 +13,12 @@ import { AppService } from '../servises/app.service';
 })
 export class MainComponent {
   constructor(
-    private mainServ: MainService,
+   public mainServ: MainService,
     private routes: ActivatedRoute,
     public appServ: AppService
   ) { }
 
+  //TODO лайки,уведомления, верстка, форма уведомленияб метатеги, сделать пайпу, добаляющую слово минут и иконку с вилкой-ложкой
 
   ngOnInit() {
     this.routes.data.subscribe(

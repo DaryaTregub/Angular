@@ -6,6 +6,7 @@ import { Post } from '../interfaces/post';
 import { AuthState } from '../store/auth.state';
 import { Store } from '@ngxs/store';
 import { RandomArr } from '../others/random-arr';
+import { LikePosts } from '../interfaces/like-posts';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class MainService {
 
   ) { }
 
-  posts_list: Posts[] = []
+  posts_list!: LikePosts[];
   post_id!: number
   post!: Post
 
@@ -42,4 +43,6 @@ export class MainService {
     const random_arr = this.randomArr.createRandomArr();
     return random_arr;
   }
+
+  
 }

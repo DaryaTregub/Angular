@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LikePosts } from 'src/app/interfaces/like-posts';
+import { MainService } from 'src/app/servises/main.service';
 
 @Component({
   selector: 'app-main-try',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainTryComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public mainServ: MainService) { }
+  title = "Попробуйте эти вкусные рецепты"
+  description = "Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqut enim ad minim"
+  result!: LikePosts[]
+  random_arr!: LikePosts[]
   ngOnInit() {
+    this.random_arr = this.mainServ.createRandomArr();
+    this.result = this.random_arr.slice(0, 4);
+  }
+  checkLike(id: number, uuid: string) {
+    this.result[id].like = !this.result[id].like
   }
 
 }

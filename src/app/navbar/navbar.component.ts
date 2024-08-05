@@ -23,8 +23,16 @@ export class NavbarComponent implements OnInit {
       next: (value) => {
         console.log(value)
         this.currentAuth.username = value.username;
-        this.currentAuth.role = value.role
-              }
+        this.currentAuth.role = value.role;       
+        if(this.currentAuth.role ==='admin'){
+          this.appServ.menu = true;   
+          this.appServ.admin_btn = true     
+        } else if( this.currentAuth.role ==='user') {
+          this.appServ.menu = true; 
+          this.appServ.admin_btn = false;  
+        }
+
+      }
     })
   }
 

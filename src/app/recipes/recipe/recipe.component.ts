@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class RecipeComponent implements OnInit {
 
   constructor(
-    private mainServ: MainService,
+    public mainServ: MainService,
     private routes: ActivatedRoute,
   ) { }
 

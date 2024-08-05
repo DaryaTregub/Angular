@@ -15,6 +15,8 @@ export class AppService {
   ) { }
   title: string = 'Foodie'
   username!: string | null
+  menu: boolean = false;
+  admin_btn: boolean = false;
   toExit() {
     this.store.dispatch(
       new AuthUpdate(
@@ -31,6 +33,9 @@ export class AppService {
         }
       )
     )
+   this.menu = false;
+   this.admin_btn =false;
+   
     this.router.navigateByUrl('/');
   };
 

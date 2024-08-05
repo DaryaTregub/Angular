@@ -1,4 +1,5 @@
 export interface Posts {
+    like: boolean
     id: string,
     body: string,
     title: string,
