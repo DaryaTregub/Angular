@@ -1,31 +1,28 @@
 import { Injectable } from '@angular/core';
-import { ResolveFn } from '@angular/router';
 import {
   Router, Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable, of, tap } from 'rxjs';
-import { ResponseService } from './servises/response.service';
-import { UsersService } from './servises/users.service';
+import { ResponseService } from '../servises/response.service';
+import { MainService } from '../servises/main.service';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class UsersResolver implements Resolve <boolean> {
-  constructor(
-    private responceServ: ResponseService,
+export class RecipeResolver implements Resolve<boolean> {
+  constructor(private responceServ: ResponseService,
     private router: Router,
-    private usersServ: UsersService
+    private mainServ: MainService
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.responceServ.getUsers().pipe(
+    return this.responceServ.getPost().pipe(
       tap(
         (res: any) => of(res),
         (err: any) => {
           return this.router.navigate(['error']);
-  })
-  );
-}
+        })
+    );
+  }
 }

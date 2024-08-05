@@ -7,18 +7,18 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { ErrorPageComponent } from './error/error.component';
 import { main } from '@popperjs/core';
 import { MainComponent } from './main/main.component';
-import { MainResolver } from './main.resolver';
+import { MainResolver } from './resolvers/main.resolver';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
-import { RecipeResolver } from './recipe.resolver';
+import { RecipeResolver } from './resolvers/recipe.resolver';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { UsersComponent } from './administration-panel/panel/admin-users/users.component';
-import { UsersResolver } from './users.resolver';
+import { UsersResolver } from './resolvers/users.resolver';
 import { UserComponent } from './administration-panel/panel/admin-user/user.component';
-import { UserResolver } from './user.resolver';
+import { UserResolver } from './resolvers/user.resolver';
 import { AdminRecipesComponent } from './administration-panel/panel/admin-recipes/admin-recipes.component';
 import { PanelComponent } from './administration-panel/panel/panel.component';
-import { AdminRecipesResolver } from './admin-recipes.resolver';
-import { AdminRecipeResolver } from './admin-recipe.resolver';
+import { AdminRecipesResolver } from './resolvers/admin-recipes.resolver';
+import { AdminRecipeResolver } from './resolvers/admin-recipe.resolver';
 import { AdminRecipeComponent } from './administration-panel/panel/admin-recipe/admin-recipe.component';
 
 

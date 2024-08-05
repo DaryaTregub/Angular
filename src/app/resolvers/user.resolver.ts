@@ -6,20 +6,21 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable, of, tap } from 'rxjs';
-import { ResponseService } from './servises/response.service';
+import { ResponseService } from '../servises/response.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminRecipeResolver implements Resolve <boolean>  {
+
+export class UserResolver implements Resolve <boolean>  {
   constructor(
     private responceServ: ResponseService,
     private router: Router,
- 
+
   ) { }
- 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.responceServ.getPost().pipe(
+    return this.responceServ.getUser().pipe(
       tap(
         (res: any) => of(res),
         (err: any) => {

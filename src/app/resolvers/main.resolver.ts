@@ -5,24 +5,23 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable, of, tap } from 'rxjs';
-import { ResponseService } from './servises/response.service';
-import { MainService } from './servises/main.service';
+import { ResponseService } from '../servises/response.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RecipeResolver implements Resolve<boolean> {
+export class MainResolver implements Resolve<boolean> {
   constructor(private responceServ: ResponseService,
-    private router: Router,
-    private mainServ: MainService
+    private router: Router
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.responceServ.getPost().pipe(
+    return this.responceServ.getPosts().pipe(
       tap(
-        (res: any) => of(res),
+        (res: any) => of(res.map((likeres: { like: boolean; })=> {return likeres.like =false})),
         (err: any) => {
           return this.router.navigate(['error']);
-        })
+        }
+      )
     );
   }
 }
