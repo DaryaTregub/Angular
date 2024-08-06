@@ -21,6 +21,7 @@ import { AuthState } from './store/auth.state';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RandomPipe } from './pipes/random.pipe';
+import { LikesState } from './store/likes.state';
 
 
 
@@ -45,13 +46,13 @@ import { RandomPipe } from './pipes/random.pipe';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot([AuthState]),
+    NgxsModule.forRoot([AuthState, LikesState]),
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule,
     AdministrationPanelModule,
  
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent ]
 })
 export class AppModule { }

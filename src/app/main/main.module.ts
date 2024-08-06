@@ -16,13 +16,14 @@ import { RandomPipe } from '../pipes/random.pipe';
 
 @NgModule({
   declarations: [
-    RandomPipe,
+ 
     MainComponent,
     MainSliderComponent,
     MainBestRecipeComponent,
     MainTryComponent,
     MainWeComponent,
     MainSubscribeComponent,
+    RandomPipe
   ],
   imports: [
     CommonModule,

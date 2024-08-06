@@ -8,6 +8,8 @@ import { Store } from '@ngxs/store';
 import { RandomArr } from '../others/random-arr';
 import { LikePosts } from '../interfaces/like-posts';
 import { HttpErrorResponse } from '@angular/common/http'
+import { LikesUpdate } from '../store/model/likes';
+import { LikesState } from '../store/likes.state';
 
 
 @Injectable({
@@ -29,7 +31,7 @@ export class MainService {
   text_comment: any
   result!: LikePosts[];
   clear_area = false
-  
+  likes: string[] = []
 
   getPost(i: string) {
     this.responceServ.post_uuid = i;
@@ -60,7 +62,7 @@ export class MainService {
             this.responceServ.post_uuid = this.post.id;
             this.responceServ.getPost().subscribe({
               next: (response: any) => {
-                this.post = response;             
+                this.post = response;
               },
               error: (err: HttpErrorResponse) => {
                 console.log(err.message)
@@ -79,6 +81,25 @@ export class MainService {
   checkLike(id: string) {
     const post_id = this.posts_list.findIndex(el => el.id === id);
     this.posts_list[post_id].like = !this.posts_list[post_id].like;
+    console.log(this.posts_list[post_id].like)
+    if (this.posts_list[post_id].like) {
+      this.likes.push(id)
+      this.store.dispatch(new LikesUpdate(this.likes))
+      this.likes = this.store.selectSnapshot(LikesState.getLikes)
+    } else {
+      const like_id = this.likes.findIndex(el => id === id);
+      this.likes.splice(like_id, 1)
+      this.store.dispatch(new LikesUpdate(this.likes))
+      this.likes = this.store.selectSnapshot(LikesState.getLikes)
+    }  
+  }
+  getLikes() {
+    if (this.likes.length > 0) {
+      this.likes.forEach((element: string) => {
+        const id = this.posts_list.findIndex(el => el.id === element);
+        this.posts_list[id].like = true;
+      });
+    }
   }
 
 

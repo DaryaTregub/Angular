@@ -3,18 +3,15 @@ import { Posts } from 'src/app/interfaces/posts';
 import { MainService } from 'src/app/servises/main.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-
-
 import { Post } from 'src/app/interfaces/post';
-
-
 import { Likes } from 'src/app/others/likes';
 import { LikePosts } from 'src/app/interfaces/like-posts';
+
 
 @Component({
   selector: 'app-main-best-recipe',
   templateUrl: './main-best-recipe.component.html',
-  styleUrls: ['./main-best-recipe.component.css']
+  styleUrls: ['./main-best-recipe.component.css'], 
 })
 export class MainBestRecipeComponent implements OnInit {
 
