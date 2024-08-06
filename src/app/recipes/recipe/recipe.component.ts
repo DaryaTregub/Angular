@@ -4,6 +4,8 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
 import { HttpErrorResponse } from '@angular/common/http';
 import { LikePosts } from 'src/app/interfaces/like-posts';
 import { RandomPipe } from 'src/app/pipes/random.pipe';
+import { Store } from '@ngxs/store';
+import { LikesState } from 'src/app/store/likes.state';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class RecipeComponent implements OnInit {
   constructor(
     public mainServ: MainService,
     private routes: ActivatedRoute,
+    private store: Store
   ) { }
 
   user_comment!: string
@@ -33,6 +36,13 @@ export class RecipeComponent implements OnInit {
           console.log(err.message)
         }
       })
+    this.store.select(LikesState.getLikes).subscribe({
+      next: (value) => {
+        console.log(value)
+        this.mainServ.likes = value;
+        this.mainServ.getLikes();
+      }
+    })
   }
 
   completeStep(i: number) {

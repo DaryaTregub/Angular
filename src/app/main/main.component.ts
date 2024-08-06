@@ -29,8 +29,6 @@ export class MainComponent {
         next: (response: any) => {
           this.mainServ.posts_list = (response[0]);
           console.log(this.mainServ.posts_list)
-
-
         },
         error: (err: HttpErrorResponse) => {
           console.log(err.message)
@@ -38,10 +36,18 @@ export class MainComponent {
       })
 
     this.appServ.getUsername();
-    if (this.mainServ.likes) {
-      this.mainServ.likes = this.likes
-      this.mainServ.getLikes();
-    }
+
+    this.store.select(LikesState.getLikes).subscribe({
+      next: (value) => {
+        console.log(value)
+        this.mainServ.likes = value;
+        this.mainServ.getLikes();
+      }
+    })
+    // if (this.mainServ.likes) {
+    //   this.mainServ.likes = this.likes
+    //   this.mainServ.getLikes();
+    // }
   }
 
 }

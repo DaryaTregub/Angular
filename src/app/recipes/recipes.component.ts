@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from '../servises/main.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { LikesState } from '../store/likes.state';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-recipes',
@@ -12,10 +14,11 @@ export class RecipesComponent implements OnInit {
 
 
   constructor(
+    private store: Store,
     public mainServ: MainService,
     private routes: ActivatedRoute,
   ) { }
-
+  likes = this.store.selectSnapshot(LikesState.getLikes)
   title = "Каталог рецептов"
 
   ngOnInit() {
@@ -29,8 +32,14 @@ export class RecipesComponent implements OnInit {
           console.log(err.message)
         }
       })
-
-      //TODO добавить лайки, метатеги
+    this.store.select(LikesState.getLikes).subscribe({
+      next: (value) => {
+        console.log(value)
+        this.mainServ.likes = value;
+        this.mainServ.getLikes();
+      }
+    })
+    //TODO добавить лайки, метатеги
   }
   checkLike(id: number, uuid: string) {
     this.mainServ.posts_list[id].like = !this.mainServ.posts_list[id].like
