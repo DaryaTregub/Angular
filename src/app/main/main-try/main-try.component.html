@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-3" *ngFor="let el of mainServ.posts_list; index as i">
+  <div class="col-3" *ngFor="let el of mainServ.posts_list | random |slice:0:4; index as i">
     <div class="card relative" style="width: 18rem;">
       <div class="absolute" style="top: 5px; right:0">
         <button data-toggle="button" (click)=" mainServ.checkLike(el.id)" aria-pressed="false">

@@ -1,6 +1,5 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from "@angular/core";
-import { Likes } from '../others/likes';
 import { LikesUpdate } from './model/likes';
 
 

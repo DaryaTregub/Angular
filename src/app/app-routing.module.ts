@@ -10,7 +10,7 @@ import { MainComponent } from './main/main.component';
 import { MainResolver } from './resolvers/main.resolver';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { RecipeResolver } from './resolvers/recipe.resolver';
-import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
+import { CreateRecipeComponent } from './recipes/create-recipe/create-recipe.component';
 import { UsersComponent } from './administration-panel/panel/admin-users/users.component';
 import { UsersResolver } from './resolvers/users.resolver';
 import { UserComponent } from './administration-panel/panel/admin-user/user.component';
@@ -56,8 +56,7 @@ const routes: Routes = [
   {
     path: 'create-recipe',
     component: CreateRecipeComponent,
-    resolve: [RecipeResolver]
-  },
+     },
 
   {
     path: 'admin',
