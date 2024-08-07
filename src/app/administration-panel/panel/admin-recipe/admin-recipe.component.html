@@ -1,1 +1,212 @@
-<p>admin-recipe works!</p>
+<h2 class="mb-3">Создание рецепта</h2>
+<h4 class="mb-3">Основная информация</h4>
+<form class="row g-3 needs-validation " novalidate>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Название рецепта</label></div>
+        <div class="col-4"><input type="text" class="form-control" id="validationCustom01" #title="ngModel" name="title"
+                [(ngModel)]="recipesServ.recipe.title" [ngClass]="{
+                'is-invalid': title.invalid && (title.dirty || title.touched),
+                'is-valid': title.valid
+            }" required>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)">
+                <div *ngIf="title.hasError('required')" class="text-danger mt-1">
+                    Введите название рецепта
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Краткое описание</label></div>
+        <div class="col-4"><textarea name="user_comment" class="form-control" id="floatingTextarea"
+                #description="ngModel" name="description" [(ngModel)]="recipesServ.recipe.body" [ngClass]="{
+                'is-invalid': description.invalid && (description.dirty || description.touched),
+                'is-valid': description.valid
+            }" required>
+          </textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                <div *ngIf="description.hasError('required')" class="text-danger mt-1">
+                    Введите краткое описание
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <h4 class="mb-3">Дополнительная информация</h4>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Категория</label></div>
+        <div class="col-4"><input type="text" class="form-control" id="validationCustom01" #categories="ngModel"
+                name="categories" [(ngModel)]="recipesServ.recipe.tags[0]" [ngClass]="{
+                    'is-invalid': categories.invalid && (categories.dirty || categories.touched),
+                    'is-valid': categories.valid
+                }" required>
+            <div *ngIf="categories.invalid && (categories.dirty || categories.touched)">
+                <div *ngIf="categories.hasError('required')" class="text-danger mt-1">
+                    Введите категорию
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Время приготовления</label></div>
+        <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #timeCooking="ngModel"
+                name="timeCooking" [(ngModel)]="recipesServ.recipe.timeCooking" [ngClass]="{
+                'is-invalid': timeCooking.invalid && (timeCooking.dirty || timeCooking.touched),
+                'is-valid': timeCooking.valid
+            }" required>
+            <div *ngIf="timeCooking.invalid && (timeCooking.dirty || timeCooking.touched)">
+                <div *ngIf="timeCooking.hasError('required')" class="text-danger mt-1">
+                    Введите время приготовления
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Белки</label></div>
+        <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #proteins="ngModel"
+                name="proteins" [(ngModel)]="recipesServ.recipe.foodValue.proteins" [ngClass]="{
+                'is-invalid': proteins.invalid && (proteins.dirty || proteins.touched),
+                'is-valid': proteins.valid
+            }" required>
+            <div *ngIf="proteins.invalid && (proteins.dirty || proteins.touched)">
+                <div *ngIf="proteins.hasError('required')" class="text-danger mt-1">
+                    Введите количество белков
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Жиры</label></div>
+        <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #fats="ngModel" name="fats"
+                [(ngModel)]="recipesServ.recipe.foodValue.fats" [ngClass]="{
+                'is-invalid': fats.invalid && (fats.dirty || fats.touched),
+                'is-valid': fats.valid
+            }" required>
+            <div *ngIf="fats.invalid && (fats.dirty || fats.touched)">
+                <div *ngIf="fats.hasError('required')" class="text-danger mt-1">
+                    Введите количество жиров
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Углеводы</label></div>
+        <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #carbohydrates="ngModel"
+                name="carbohydrates" [(ngModel)]="recipesServ.recipe.foodValue.carbohydrates" [ngClass]="{
+                'is-invalid': carbohydrates.invalid && (carbohydrates.dirty || carbohydrates.touched),
+                'is-valid': carbohydrates.valid
+            }" required>
+            <div *ngIf="carbohydrates.invalid && ( carbohydrates.dirty ||  carbohydrates.touched)">
+                <div *ngIf=" carbohydrates.hasError('required')" class="text-danger mt-1">
+                    Введите количество углеводов
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row">
+        <div class="col-4"> <label for="validationCustom01" class="form-label">Калории</label></div>
+        <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #calories="ngModel"
+                name="calories" [(ngModel)]="recipesServ.recipe.foodValue.calories" [ngClass]="{
+                'is-invalid': calories.invalid && (calories.dirty || calories.touched),
+                'is-valid': calories.valid
+            }" required>
+            <div *ngIf="calories.invalid && ( calories.dirty ||  calories.touched)">
+                <div *ngIf=" calories.hasError('required')" class="text-danger mt-1">
+                    Введите количество калорий
+                </div>
+            </div>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <h4 class="mb-3">Детальная информация</h4>
+    <p>Детально ошишите первый шаг вашего рецепта</p>
+    <div>
+        <div *ngFor="let el of recipesServ.recipe.cookingSteps; index as i">
+            <div class="row">
+                <div class="col-4"> <label for="validationCustom01" class="form-label">Краткое действие</label></div>
+                <div class="col-4"><input type="text" class="form-control" id="validationCustom01" #step_title="ngModel"
+                        name="step_title-{{i}}" [(ngModel)]="recipesServ.recipe.cookingSteps[i].title" [ngClass]="{
+                    'is-invalid': step_title.invalid && (step_title.dirty || step_title.touched),
+                    'is-valid': step_title.valid
+                }" required>
+                    <div *ngIf="step_title.invalid && ( step_title.dirty ||  step_title.touched)">
+                        <div *ngIf=" step_title.hasError('required')" class="text-danger mt-1">
+                            Введите краткое действие
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"> </div>
+            </div>
+            <div class="row">
+                <div class="col-4"> <label for="validationCustom01" class="form-label">Описание</label></div>
+                <div class="col-4"><textarea name="user_comment" class="form-control" id="floatingTextarea"
+                        id="validationCustom01" #step_description="ngModel" name="step_description-{{i}}"
+                        [(ngModel)]="recipesServ.recipe.cookingSteps[i].description" [ngClass]="{
+                    'is-invalid': step_description.invalid && (step_description.dirty || step_description.touched),
+                    'is-valid': step_description.valid
+                }" required>
+        </textarea>
+                    <div *ngIf="step_description.invalid && ( step_description.dirty || step_description.touched)">
+                        <div *ngIf="step_description.hasError('required')" class="text-danger mt-1">
+                            Введите описание
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2"> <button class="btn btn-primary" (click)="recipesServ.addStep()">Добавить еще</button></div>
+    </div>
+    <h4 class="mb-3">Ингредиенты</h4>
+    <div *ngFor="let el of recipesServ.recipe.ingredients; index as i">
+        <div class=" row">
+            <div class="col-4"> <label for="validationCustom01" class="form-label">Название ингредиента</label></div>
+            <div class="col-4"><input type="text" class="form-control" id="validationCustom01"
+                    #ingredients_title="ngModel" name="ingredients_title-{{i}}"
+                    [(ngModel)]="recipesServ.recipe.ingredients[i].title" [ngClass]="{
+                'is-invalid': ingredients_title.invalid && (ingredients_title.dirty || ingredients_title.touched),
+                'is-valid': ingredients_title.valid
+            }" required>
+                <div *ngIf="ingredients_title.invalid && ( ingredients_title.dirty || ingredients_title.touched)">
+                    <div *ngIf="ingredients_title.hasError('required')" class="text-danger mt-1">
+                        Введите название ингредиента
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"> </div>
+        </div>
+        <div class="row">
+            <div class="col-4"> <label for="validationCustom01" class="form-label">Описание</label></div>
+            <div class="col-4"><input type="text" class="form-control" id="validationCustom01"
+                    #ingredients_description="ngModel" name="ingredients_description-{{i}}"
+                    [(ngModel)]="recipesServ.recipe.ingredients[i].description" [ngClass]="{
+                'is-invalid': ingredients_description.invalid && (ingredients_description.dirty || ingredients_description.touched),
+                'is-valid': ingredients_description.valid
+            }" required>
+                <div
+                    *ngIf="ingredients_description.invalid && ( ingredients_description.dirty || ingredients_description.touched)">
+                    <div *ngIf="ingredients_description.hasError('required')" class="text-danger mt-1">
+                        Введите описание ингредиента
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"> </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2"> <button class="btn btn-primary" (click)="recipesServ.addIngredients()">Добавить еще</button></div>
+    </div>
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2"> <button class="btn btn-primary"
+                [disabled]="title.invalid || description.invalid || categories.invalid || timeCooking.invalid || proteins.invalid || fats.invalid || carbohydrates.invalid || calories.invalid  "
+                (click)="recipesServ.saveRecipe()">Сохранить</button></div>
+    </div>
+</form>

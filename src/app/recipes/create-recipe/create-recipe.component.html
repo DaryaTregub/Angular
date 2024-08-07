@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Название рецепта</label></div>
         <div class="col-4"><input type="text" class="form-control" id="validationCustom01" #title="ngModel" name="title"
-                [(ngModel)]="recipe.title" [ngClass]="{
+                [(ngModel)]="recipeServ.recipe.title" [ngClass]="{
                 'is-invalid': title.invalid && (title.dirty || title.touched),
                 'is-valid': title.valid
             }" required>
@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Краткое описание</label></div>
         <div class="col-4"><textarea name="user_comment" class="form-control" id="floatingTextarea"
-                #description="ngModel" name="description" [(ngModel)]="recipe.body" [ngClass]="{
+                #description="ngModel" name="description" [(ngModel)]="recipeServ.recipe.body" [ngClass]="{
                 'is-invalid': description.invalid && (description.dirty || description.touched),
                 'is-valid': description.valid
             }" required>
@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Категория</label></div>
         <div class="col-4"><input type="text" class="form-control" id="validationCustom01" #categories="ngModel"
-                name="categories" [(ngModel)]="recipe.tags" [ngClass]="{
+                name="categories" [(ngModel)]="recipeServ.recipe.tags[0]" [ngClass]="{
                     'is-invalid': categories.invalid && (categories.dirty || categories.touched),
                     'is-valid': categories.valid
                 }" required>
@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Время приготовления</label></div>
         <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #timeCooking="ngModel"
-                name="timeCooking" [(ngModel)]="recipe.timeCooking" [ngClass]="{
+                name="timeCooking" [(ngModel)]="recipeServ.recipe.timeCooking" [ngClass]="{
                 'is-invalid': timeCooking.invalid && (timeCooking.dirty || timeCooking.touched),
                 'is-valid': timeCooking.valid
             }" required>
@@ -66,7 +66,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Белки</label></div>
         <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #proteins="ngModel"
-                name="proteins" [(ngModel)]="recipe.foodValue.proteins" [ngClass]="{
+                name="proteins" [(ngModel)]="recipeServ.recipe.foodValue.proteins" [ngClass]="{
                 'is-invalid': proteins.invalid && (proteins.dirty || proteins.touched),
                 'is-valid': proteins.valid
             }" required>
@@ -81,7 +81,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Жиры</label></div>
         <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #fats="ngModel" name="fats"
-                [(ngModel)]="recipe.foodValue.fats" [ngClass]="{
+                [(ngModel)]="recipeServ.recipe.foodValue.fats" [ngClass]="{
                 'is-invalid': fats.invalid && (fats.dirty || fats.touched),
                 'is-valid': fats.valid
             }" required>
@@ -96,7 +96,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Углеводы</label></div>
         <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #carbohydrates="ngModel"
-                name="carbohydrates" [(ngModel)]="recipe.foodValue.carbohydrates" [ngClass]="{
+                name="carbohydrates" [(ngModel)]="recipeServ.recipe.foodValue.carbohydrates" [ngClass]="{
                 'is-invalid': carbohydrates.invalid && (carbohydrates.dirty || carbohydrates.touched),
                 'is-valid': carbohydrates.valid
             }" required>
@@ -111,7 +111,7 @@
     <div class="row">
         <div class="col-4"> <label for="validationCustom01" class="form-label">Калории</label></div>
         <div class="col-4"><input type="number" class="form-control" id="validationCustom01" #calories="ngModel"
-                name="calories" [(ngModel)]="recipe.foodValue.calories" [ngClass]="{
+                name="calories" [(ngModel)]="recipeServ.recipe.foodValue.calories" [ngClass]="{
                 'is-invalid': calories.invalid && (calories.dirty || calories.touched),
                 'is-valid': calories.valid
             }" required>
@@ -126,11 +126,11 @@
     <h4 class="mb-3">Детальная информация</h4>
     <p>Детально ошишите первый шаг вашего рецепта</p>
     <div>
-        <div *ngFor="let el of recipe.cookingSteps; index as i">
+        <div *ngFor="let el of recipeServ.recipe.cookingSteps; index as i">
             <div class="row">
                 <div class="col-4"> <label for="validationCustom01" class="form-label">Краткое действие</label></div>
                 <div class="col-4"><input type="text" class="form-control" id="validationCustom01" #step_title="ngModel"
-                        name="step_title-{{i}}" [(ngModel)]="recipe.cookingSteps[i].title" [ngClass]="{
+                        name="step_title-{{i}}" [(ngModel)]="recipeServ.recipe.cookingSteps[i].title" [ngClass]="{
                     'is-invalid': step_title.invalid && (step_title.dirty || step_title.touched),
                     'is-valid': step_title.valid
                 }" required>
@@ -146,7 +146,7 @@
                 <div class="col-4"> <label for="validationCustom01" class="form-label">Описание</label></div>
                 <div class="col-4"><textarea name="user_comment" class="form-control" id="floatingTextarea"
                         id="validationCustom01" #step_description="ngModel" name="step_description-{{i}}"
-                        [(ngModel)]="recipe.cookingSteps[i].description" [ngClass]="{
+                        [(ngModel)]="recipeServ.recipe.cookingSteps[i].description" [ngClass]="{
                     'is-invalid': step_description.invalid && (step_description.dirty || step_description.touched),
                     'is-valid': step_description.valid
                 }" required>
@@ -162,15 +162,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2"> <button class="btn btn-primary" (click)="addStep()">Добавить еще</button></div>
+        <div class="col-2"> <button class="btn btn-primary" (click)="recipeServ.addStep()">Добавить еще</button></div>
     </div>
     <h4 class="mb-3">Ингредиенты</h4>
-    <div *ngFor="let el of recipe.ingredients; index as i">
+    <div *ngFor="let el of recipeServ.recipe.ingredients; index as i">
         <div class=" row">
             <div class="col-4"> <label for="validationCustom01" class="form-label">Название ингредиента</label></div>
             <div class="col-4"><input type="text" class="form-control" id="validationCustom01"
                     #ingredients_title="ngModel" name="ingredients_title-{{i}}"
-                    [(ngModel)]="recipe.ingredients[i].title" [ngClass]="{
+                    [(ngModel)]="recipeServ.recipe.ingredients[i].title" [ngClass]="{
                 'is-invalid': ingredients_title.invalid && (ingredients_title.dirty || ingredients_title.touched),
                 'is-valid': ingredients_title.valid
             }" required>
@@ -186,7 +186,7 @@
             <div class="col-4"> <label for="validationCustom01" class="form-label">Описание</label></div>
             <div class="col-4"><input type="text" class="form-control" id="validationCustom01"
                     #ingredients_description="ngModel" name="ingredients_description-{{i}}"
-                    [(ngModel)]="recipe.ingredients[i].description" [ngClass]="{
+                    [(ngModel)]="recipeServ.recipe.ingredients[i].description" [ngClass]="{
                 'is-invalid': ingredients_description.invalid && (ingredients_description.dirty || ingredients_description.touched),
                 'is-valid': ingredients_description.valid
             }" required>
@@ -201,12 +201,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2"> <button class="btn btn-primary" (click)="addIngredients()">Добавить еще</button></div>
+        <div class="col-2"> <button class="btn btn-primary" (click)="recipeServ.addIngredients()">Добавить еще</button></div>
     </div>
     <div class="row">
         <div class="col-10"></div>
         <div class="col-2"> <button class="btn btn-primary"
-                [disabled]="title.invalid || description.invalid || categories.invalid || timeCooking.invalid || proteins.invalid || fats.invalid || carbohydrates.invalid || calories.invalid || step_title[i] || step_description || ingredients_title || ingredients_description"
-                (click)="createRecipe()">Отправить рецепт</button></div>
+                [disabled]="title.invalid || description.invalid || categories.invalid || timeCooking.invalid || proteins.invalid || fats.invalid || carbohydrates.invalid || calories.invalid || step_title|| step_description || ingredients_title || ingredients_description"
+                (click)="recipeServ.createRecipe()">Отправить рецепт</button></div>
     </div>
 </form>

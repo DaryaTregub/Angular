@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRecipesService } from 'src/app/servises/admin-recipes.service';
+import { MainService } from 'src/app/servises/main.service';
 
 @Component({
   selector: 'app-admin-recipe',
@@ -10,6 +11,7 @@ import { AdminRecipesService } from 'src/app/servises/admin-recipes.service';
 })
 export class AdminRecipeComponent {
   constructor(public recipesServ: AdminRecipesService,
+    public mainServe: MainService,
     private routes: ActivatedRoute,
     private router:Router){
   }

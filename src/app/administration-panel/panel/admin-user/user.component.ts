@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/servises/users.service';
 })
 export class UserComponent {
   constructor(
-    private usersServ: UsersService,
+   public usersServ: UsersService,
     private routes: ActivatedRoute,
   ) { }
   ngOnInit() {

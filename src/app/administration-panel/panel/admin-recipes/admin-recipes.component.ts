@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRecipesService } from 'src/app/servises/admin-recipes.service';
+import { MainService } from 'src/app/servises/main.service';
 import { ResponseService } from 'src/app/servises/response.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { ResponseService } from 'src/app/servises/response.service';
 export class AdminRecipesComponent {
   constructor(
     public recipesServ: AdminRecipesService,
+    public mainServ: MainService,
     private routes: ActivatedRoute,
     private router:Router
 

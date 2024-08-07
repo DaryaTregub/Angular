@@ -9,6 +9,7 @@ import { LikePosts } from '../interfaces/like-posts';
 import { HttpErrorResponse } from '@angular/common/http'
 import { LikesUpdate } from '../store/model/likes';
 import { LikesState } from '../store/likes.state';
+import { CreateRecipe } from '../interfaces/create-recipe';
 
 
 @Injectable({
@@ -29,7 +30,8 @@ export class MainService {
   text_comment: any
   result!: LikePosts[];
   clear_area = false
-  likes: string[] = []
+  likes: string[] = [];
+  new_recipe!: CreateRecipe
 
   getPost(i: string) {
     this.responceServ.post_uuid = i;
@@ -84,7 +86,7 @@ export class MainService {
       this.likes.splice(like_id, 1)
       this.store.dispatch(new LikesUpdate(this.likes))
       this.likes = this.store.selectSnapshot(LikesState.getLikes)
-    }  
+    }
   }
   getLikes() {
     if (this.likes.length > 0) {
@@ -93,6 +95,18 @@ export class MainService {
         this.posts_list[id].like = true;
       });
     }
+  }
+
+  postNewRecipe() {
+    this.responceServ.new_recipe = this.new_recipe;
+    this.responceServ.postCreateRecipe().subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    })
   }
 
 

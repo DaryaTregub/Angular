@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CreateRecipeService } from '../../servises/create-recipe.service';
 import { CreateRecipe } from 'src/app/interfaces/create-recipe';
+import { AdminRecipesService } from 'src/app/servises/admin-recipes.service';
+import { MainService } from 'src/app/servises/main.service';
 
 
 @Component({
@@ -10,67 +11,17 @@ import { CreateRecipe } from 'src/app/interfaces/create-recipe';
 })
 export class CreateRecipeComponent {
   constructor(
-    public createRecipeServ: CreateRecipeService
-
+public recipeServ: AdminRecipesService
   ) { }
 
-  // public createRecipeServ: CreateRecipeService
-  recipe: CreateRecipe = {
 
-    body: '',
-    title: '',
-    tags: [
 
-    ],
-    image: '',
-    timeCooking: null,
-    foodValue: {
-      calories: null,
-      fats: null,
-      carbohydrates: null,
-      proteins: null
-    },
-    cookingSteps: [
-      {
-        title: '',
-        description: ''
-      }
-    ],
-    ingredients: [
-      {
-        title: '',
-        description: ''
-      }
-    ]
-
-  }
-
- 
 
 
   ngOnInit() {
 
   }
 
-  createRecipe() {
-    console.log(this.recipe)
-  }
 
-  addStep() {
-    const step = {
-      title: '',
-      description: ''
-    };
-    this.recipe.cookingSteps.push(step)
-
-  }
-
-  addIngredients() {
-    const ingredient = {
-      title: '',
-      description: ''
-    };
-    this.recipe.ingredients.push(ingredient)
-  }
 
 }

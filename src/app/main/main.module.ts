@@ -15,8 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { RandomPipe } from '../pipes/random.pipe';
 
 @NgModule({
-  declarations: [
- 
+  declarations: [ 
     MainComponent,
     MainSliderComponent,
     MainBestRecipeComponent,

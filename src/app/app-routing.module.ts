@@ -20,6 +20,8 @@ import { PanelComponent } from './administration-panel/panel/panel.component';
 import { AdminRecipesResolver } from './resolvers/admin-recipes.resolver';
 import { AdminRecipeResolver } from './resolvers/admin-recipe.resolver';
 import { AdminRecipeComponent } from './administration-panel/panel/admin-recipe/admin-recipe.component';
+import { ErrorAccessComponent } from './error-access/error-access.component';
+import { CreateRecipeGuard } from './create-recipe.guard';
 
 
 
@@ -56,7 +58,8 @@ const routes: Routes = [
   {
     path: 'create-recipe',
     component: CreateRecipeComponent,
-     },
+    canActivate:[CreateRecipeGuard]
+  },
 
   {
     path: 'admin',
@@ -85,19 +88,10 @@ const routes: Routes = [
     component: UserComponent,
     resolve: [UserResolver]
   },
-  // {
-  //   path: 'admin/users',
-  //   component: UsersComponent,
-  //   resolve: [UsersResolver]
-  // },
-  // {
-  //   path: 'admin/users/:id',
-  //   component: UserComponent,
-  //   resolve: [UserResolver]
-  // },
-
-
-
+  {
+    path: 'error-access',
+    component: ErrorAccessComponent
+  }
 
 
 ];

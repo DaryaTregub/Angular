@@ -22,6 +22,7 @@ import { CreateRecipeComponent } from './recipes/create-recipe/create-recipe.com
 import { RecipesComponent } from './recipes/recipes.component';
 import { RandomPipe } from './pipes/random.pipe';
 import { LikesState } from './store/likes.state';
+import { ErrorAccessComponent } from './error-access/error-access.component';
 
 
 
@@ -37,7 +38,8 @@ import { LikesState } from './store/likes.state';
     RecipeComponent,
     CreateRecipeComponent,
     RecipesComponent,
-    RandomPipe
+    RandomPipe,
+    ErrorAccessComponent
   ],
   imports: [
     BrowserModule,

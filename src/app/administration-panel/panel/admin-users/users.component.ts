@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/servises/users.service';
 import { ActivatedRoute } from '@angular/router';
+import { MainService } from 'src/app/servises/main.service';
 
 
 @Component({
@@ -13,9 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 
 export class UsersComponent {
 
-  constructor(public usersServ: UsersService,
+  constructor(
+    public usersServ: UsersService,
     private router: Router,
-    private routes: ActivatedRoute,) { }
+    private routes: ActivatedRoute,
+   ) { }
+   ;
 
   ngOnInit() {
      this.routes.data.subscribe({
@@ -29,8 +33,7 @@ export class UsersComponent {
     })
   }
 
-  loadUser(i:number) {
-    this.usersServ.getUser(i);
-    this.router.navigateByUrl(`/admin/users/${i+1}`);
-  }
+
+
+
 }

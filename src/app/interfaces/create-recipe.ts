@@ -1,7 +1,7 @@
 export interface CreateRecipe {
 
-    body: string,
-    title: string,
+    body: string | null,
+    title: string | null,
     tags: string[
       
     ],

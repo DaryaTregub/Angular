@@ -1,7 +1,16 @@
-<button routerLink="/admin/users">
+<h1>Панель администрирования</h1>
+<ul class="nav nav-underline">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/admin/users"> Управление пользователями</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/recipes">Управление рецептами</a>
+    </li>
+</ul>
+<!-- <button routerLink="/admin/users">
     Управление пользователями
 </button>
 <button routerLink="/admin/recipes">
     Управление рецептами
-</button>
+</button> -->
 <router-outlet></router-outlet>

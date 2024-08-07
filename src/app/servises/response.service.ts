@@ -4,6 +4,7 @@ import { Registration } from '../interfaces/registration';
 import { Autorization } from '../interfaces/autorization';
 import { Store } from '@ngxs/store';
 import { AuthState } from '../store/auth.state';
+import { CreateRecipe } from '../interfaces/create-recipe';
 
 
 @Injectable({
@@ -25,8 +26,11 @@ export class ResponseService {
   add_comment = `/add-comment`
   text_comment!: {
     text: string
-  }
-
+  };
+  create_recipe = '/api/cooking-blog/posts/create';
+  new_recipe!: CreateRecipe
+ 
+ 
 
   getToken() {
     return this.store.selectSnapshot(AuthState.getToken);
@@ -72,6 +76,29 @@ export class ResponseService {
       { headers: post_headers }
     )
   }
+
+  postCreateRecipe() {
+    const token = this.getToken();
+    const post_headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.url + this.create_recipe, this.new_recipe, { headers: post_headers })
+  }
+
+  deleteUser() {
+    const token = this.getToken();
+    const post_headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);   
+    return this.http.delete(this.url + this.users + `/${this.user_uuid}`, {headers: post_headers } )
+  }
+
+  deleteRecipe() {
+    const token = this.getToken();
+    const post_headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);   
+    return this.http.delete(this.url + this.allposts + `/${this.post_uuid}`, {headers: post_headers } )
+  }
+  
+ 
+
+
+
 
 
 }
