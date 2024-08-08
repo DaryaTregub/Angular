@@ -20,10 +20,9 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { AuthState } from './store/auth.state';
 import { CreateRecipeComponent } from './recipes/create-recipe/create-recipe.component';
 import { RecipesComponent } from './recipes/recipes.component';
-import { RandomPipe } from './pipes/random.pipe';
 import { LikesState } from './store/likes.state';
 import { ErrorAccessComponent } from './error-access/error-access.component';
-
+import { RandomPipe } from './pipes/random.pipe';
 
 
 

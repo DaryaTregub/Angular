@@ -13,5 +13,4 @@ export class RandomPipe implements PipeTransform {
       .map(([, i]) => value[i])
   }
 
-
 }

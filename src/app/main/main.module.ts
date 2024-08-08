@@ -12,7 +12,7 @@ import { MainSubscribeComponent } from './main-subscribe/main-subscribe.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { RandomPipe } from '../pipes/random.pipe';
+// import { RandomPipe } from '../pipes/random.pipe';
 
 @NgModule({
   declarations: [ 
@@ -22,7 +22,7 @@ import { RandomPipe } from '../pipes/random.pipe';
     MainTryComponent,
     MainWeComponent,
     MainSubscribeComponent,
-    RandomPipe
+    // RandomPipe,    
   ],
   imports: [
     CommonModule,
